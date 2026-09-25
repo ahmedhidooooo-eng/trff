@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امتحان اللغة العربية التفاعلي - الصف الخامس الابتدائي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #f0f4f9;
+            --card-bg: #ffffff;
+            --header-gradient: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+            --section-gradient: linear-gradient(135deg, #00695c 0%, #00897b 100%);
+            --text-dark: #2d3748;
+            --border-color: #cbd5e1;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --correct-color: #1b5e20;
+            --wrong-color: #b71c1c;
+            --explain-color: #0d47a1;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .banner {
+            background: var(--header-gradient);
+            color: #ffffff;
+            padding: 25px 20px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .banner h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .banner p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+
+        .teacher-info {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.3);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .teacher-info span {
+            display: inline-block;
+            margin: 0 8px;
+            direction: ltr;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .student-box label {
+            display: block;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .student-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 1.05rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .student-box input:focus {
+            border-color: #2e7d32;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+        }
+
+        .section-header {
+            background: var(--section-gradient);
+            color: #ffffff;
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: block;
+            text-align: right;
+        }
+
+        .passage-box {
+            background-color: #f8fafc;
+            border-right: 4px solid #00897b;
+            padding: 12px 16px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            line-height: 1.7;
+            color: #1e293b;
+        }
+
+        .q-block {
+            margin-bottom: 24px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .q-block:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .q-title {
+            font-weight: 700;
+            margin-bottom: 14px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .opt-btn {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: #ffffff;
+            font-size: 1.05rem;
+        }
+
+        .opt-btn:hover {
+            background-color: #e8f5e9;
+            border-color: #81c784;
+        }
+
+        .opt-btn input[type="radio"] {
+            margin-left: 12px;
+            accent-color: #2e7d32;
+            width: 19px;
+            height: 19px;
+        }
+
+        .feedback {
+            margin-top: 12px;
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .feedback.correct {
+            background-color: #e8f5e9;
+            color: var(--correct-color);
+            border: 1.5px solid #81c784;
+        }
+
+        .feedback.wrong {
+            background-color: #ffebee;
+            color: var(--wrong-color);
+            border: 1.5px solid #e57373;
+        }
+
+        .explanation {
+            margin-top: 6px;
+            font-weight: 600;
+            color: var(--explain-color);
+            font-size: 0.95rem;
+        }
+
+        .btn-submit {
+            background: var(--header-gradient);
+            color: #ffffff;
+            border: none;
+            padding: 16px;
+            border-radius: var(--radius-lg);
+            font-size: 1.25rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s ease;
+            width: 100%;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.99);
+        }
+
+        #result-box {
+            display: none;
+            text-align: center;
+        }
+
+        .score-output {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--correct-color);
+            margin-top: 15px;
+        }
+
+        .alert-message {
+            color: var(--wrong-color);
+            font-weight: 700;
+            text-align: center;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- Header Banner -->
+    <div class="banner">
+        <h1>امتحان اللغة العربية الشامل والتفاعلي</h1>
+        <p>الصف الخامس الابتدائي - الفصل الدراسي الأول (40 سؤالاً)</p>
+        <div class="teacher-info">
+            إعداد أستاذ: أحمد وحيد <span>(01030353036)</span>
+        </div>
+    </div>
+
+    <!-- Student Name Card -->
+    <div class="card student-box">
+        <label for="studentName">اسم الطالب / الطالبة:</label>
+        <input type="text" id="studentName" placeholder="اكتب اسمك الثلاثي هنا..." autocomplete="off">
+    </div>
+
+    <form id="quizForm">
+
+        <!-- المحور الأول: الإملاء -->
+        <div class="card">
+            <span class="section-header">أولاً: الإِمْلَاءُ (هَمْزَةُ القَطْعِ وَأَلِفُ الوَصْلِ) (الأسئلة 1 - 7)</span>
+
+            <div class="q-block">
+                <div class="q-title">1. الكَلِمَةُ الَّتِي تَبْدَأُ بِـ (هَمْزَةِ قَطْعٍ) فِيمَا يَلِي هِيَ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q1" value="أحمد" onclick="checkAnswer('q1')"> أَحْمَدُ</label>
+                    <label class="opt-btn"><input type="radio" name="q1" value="الوطن" onclick="checkAnswer('q1')"> الوَطَنُ</label>
+                    <label class="opt-btn"><input type="radio" name="q1" value="استرداد" onclick="checkAnswer('q1')"> اسْتِرْدَادٌ</label>
+                </div>
+                <div class="feedback" id="fb-q1"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">2. الكَلِمَةُ الَّتِي تَبْدَأُ بِـ (أَلِفِ وَصْلٍ) فِيمَا يَلِي هِيَ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q2" value="الجيش" onclick="checkAnswer('q2')"> الجَيْشُ</label>
+                    <label class="opt-btn"><input type="radio" name="q2" value="أقصى" onclick="checkAnswer('q2')"> أَقْصَى</label>
+                    <label class="opt-btn"><input type="radio" name="q2" value="أبطال" onclick="checkAnswer('q2')"> أَبْطَالٌ</label>
+                </div>
+                <div class="feedback" id="fb-q2"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">3. كَلِمَةُ (اقْتِرَاح) أَلِفُهَا أَلِفُ وَصْلٍ لِأَنَّهَا:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q3" value="وصل" onclick="checkAnswer('q3')"> تُنْطَقُ فِي بَدَاءِ الكَلَامِ وَلَا تُكْتَبُ عَلَيْهَا هَمْزَةٌ</label>
+                    <label class="opt-btn"><input type="radio" name="q3" value="قطع" onclick="checkAnswer('q3')"> تُكْتَبُ فَوْقَهَا هَمْزَةٌ دَائِمًا</label>
+                </div>
+                <div class="feedback" id="fb-q3"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">4. أَيُّ الجُمَلِ الآتِيَةِ كُتِبَتْ فِيهَا الهَمْزَاتُ بِشَكْلٍ صَحِيحٍ؟</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q4" value="صحيحة" onclick="checkAnswer('q4')"> أَرْسَلَ الجُنْدِيُّ الرِّسَالَةَ</label>
+                    <label class="opt-btn"><input type="radio" name="q4" value="خاطئة" onclick="checkAnswer('q4')"> ارسل الجنديُّ الرِسالَةَ</label>
+                </div>
+                <div class="feedback" id="fb-q4"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">5. كلمة (إِلَى) هَمْزَتُهَا هَمْزَةُ قَطْعٍ لِأَنَّهَا:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q5" value="حرف" onclick="checkAnswer('q5')"> حَرْفٌ (وَكُلُّ الحُرُوفِ هَمْزَتُهَا قَطْعٌ مَا عَدَا الـ)</label>
+                    <label class="opt-btn"><input type="radio" name="q5" value="اسم" onclick="checkAnswer('q5')"> اسْمٌ يَبْدَأُ بِأَلِفِ وَصْلٍ</label>
+                </div>
+                <div class="feedback" id="fb-q5"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">6. لِلتَّمْيِيزِ بَيْنَ هَمْزَةِ القَطْعِ وَأَلِفِ الوَصْلِ نَضَعُ قَبْلَ الكَلِمَةِ حَرْفَ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q6" value="الواو أو الفاء" onclick="checkAnswer('q6')"> الوَاوِ أَوْ الفَاءِ</label>
+                    <label class="opt-btn"><input type="radio" name="q6" value="السين" onclick="checkAnswer('q6')"> السِّينِ أَوْ السَّوْفَ</label>
+                </div>
+                <div class="feedback" id="fb-q6"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">7. كلمة (اكْتَشَفَ) الهَمْزَةُ فِيهَا أَلِفُ وَصْلٍ، فَعِنْدَ وَصْلِهَا بِمَا قَبْلَهَا (وَاكْتَشَفَ):</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q7" value="تسقط نطقا" onclick="checkAnswer('q7')"> تَسْقُطُ الهَمْزَةُ فِي النُّطْقِ وَتُكْتَبُ بِدُونِ هَمْزَةٍ</label>
+                    <label class="opt-btn"><input type="radio" name="q7" value="تثبت" onclick="checkAnswer('q7')"> تُنْطَقُ وتُرْسَمُ فَوْقَهَا هَمْزَةٌ</label>
+                </div>
+                <div class="feedback" id="fb-q7"></div>
+            </div>
+        </div>
+
+        <!-- المحور الثاني: النحو -->
+        <div class="card">
+            <span class="section-header">ثانياً: إِعْرَابُ المُبْتَدَأِ وَالخَبَرِ (المُفْرَد، المَثْنَى، الجَمْع بِأَنْوَاعِهِ) (الأسئلة 8 - 14)</span>
+
+            <div class="q-block">
+                <div class="passage-box">«الوَطَنُ عَزِيزٌ عَلَى كُلِّ إِنْسَانٍ، وَأَبْنَاؤُهُ يَعْمَلُونَ مِنْ أَجْلِ رِفْعَتِهِ.»</div>
+                <div class="q-title">8. إِعْرَابُ كلمة (الوَطَنُ) (مفرد) فِي الجُمْلَةِ السَّابِقَةِ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q8" value="مبتدأ مرفوع بالضمة" onclick="checkAnswer('q8')"> مُبْتَدَأٌ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ الضَّمَّةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q8" value="خبر مرفوع" onclick="checkAnswer('q8')"> خَبَرٌ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ الضَّمَّةُ</label>
+                </div>
+                <div class="feedback" id="fb-q8"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«العَالِمَانِ بَارِعَانِ فِي ابْتِكَارِ الحُلُولِ الجَدِيدَةِ لِلْمُشْكِلَاتِ.»</div>
+                <div class="q-title">9. كلمة (العَالِمَانِ) (مثنى) تُعْرَبُ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q9" value="مبتدأ مرفوع بالألف" onclick="checkAnswer('q9')"> مُبْتَدَأٌ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ الأَلِفُ (لِأَنَّهُ مَثْنًى)</label>
+                    <label class="opt-btn"><input type="radio" name="q9" value="مبتدأ مرفوع بالضمة" onclick="checkAnswer('q9')"> مُبْتَدَأٌ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ الضَّمَّةُ</label>
+                </div>
+                <div class="feedback" id="fb-q9"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«المُعَلِّمُونَ مُخْلِصُونَ فِي أَدَاءِ رِسَالَتِهِمْ السَّامِيَةِ.»</div>
+                <div class="q-title">10. كلمة (مُخْلِصُونَ) (جمع مذكر سالم) تُعْرَبُ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q10" value="خبر مرفوع بالواو" onclick="checkAnswer('q10')"> خَبَرٌ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ الوَاوُ (لِأَنَّهُ جَمْعُ مُذَكَّرٍ سَالِمٌ)</label>
+                    <label class="opt-btn"><input type="radio" name="q10" value="خبر مرفوع بالضمة" onclick="checkAnswer('q10')"> خَبَرٌ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ الضَّمَّةُ</label>
+                </div>
+                <div class="feedback" id="fb-q10"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«الأُمَّهَاتُ رَحِيمَاتٌ بِأَبْنَائِهِنَّ دَائِمًا.»</div>
+                <div class="q-title">11. كلمة (الأُمَّهَاتُ) (جمع مؤنث سالم) تُعْرَبُ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q11" value="مبتدأ مرفوع بالضمة" onclick="checkAnswer('q11')"> مُبْتَدَأٌ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ الضَّمَّةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q11" value="مبتدأ مرفوع بالألف" onclick="checkAnswer('q11')"> مُبْتَدَأٌ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ الأَلِفُ</label>
+                </div>
+                <div class="feedback" id="fb-q11"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«العُلَمَاءُ أَقْوِيَاءُ بِعِلْمِهِمْ وَفِكْرِهِمْ المُنِيرِ.»</div>
+                <div class="q-title">12. كلمة (أَقْوِيَاءُ) (جمع تكسير) تُعْرَبُ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q12" value="خبر مرفوع بالضمة" onclick="checkAnswer('q12')"> خَبَرٌ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ الضَّمَّةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q12" value="خبر مرفوع بالواو" onclick="checkAnswer('q12')"> خَبَرٌ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ الوَاوُ</label>
+                </div>
+                <div class="feedback" id="fb-q12"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«الجُنْدِيَانِ شُجَاعَانِ فِي مَيْدَانِ المَعْرَكَةِ.»</div>
+                <div class="q-title">13. الخَبَرُ فِي الجُمْلَةِ السَّابِقَةِ هُوَ كلمة (شُجَاعَانِ) وَعَلَامَةُ رَفْعِهِ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q13" value="الألف" onclick="checkAnswer('q13')"> الأَلِفُ (لِأَنَّهُ مَثْنًى)</label>
+                    <label class="opt-btn"><input type="radio" name="q13" value="الضمة" onclick="checkAnswer('q13')"> الضَّمَّةُ</label>
+                </div>
+                <div class="feedback" id="fb-q13"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«المَهَنْدِسُونَ مَاهِرُونَ فِي تَصْمِيمِ المَشَارِيعِ.»</div>
+                <div class="q-title">14. المُبْتَدَأُ فِي الجُمْلَةِ السَّابِقَةِ مَرْفُوعٌ وَعَلَامَةُ رَفْعِهِ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q14" value="الواو" onclick="checkAnswer('q14')"> الوَاوُ (لِأَنَّهُ جَمْعُ مُذَكَّرٍ سَالِمٌ)</label>
+                    <label class="opt-btn"><input type="radio" name="q14" value="الضمة" onclick="checkAnswer('q14')"> الضَّمَّةُ</label>
+                </div>
+                <div class="feedback" id="fb-q14"></div>
+            </div>
+        </div>
+
+        <!-- المحور الثالث: النحو - المفعول به -->
+        <div class="card">
+            <span class="section-header">ثالثاً: إِعْرَابُ المَفْعُولِ بِهِ (المُفْرَد، جَمْع التَّكْسِير، جَمْع المُؤَنَّث السَّالِم) (الأسئلة 15 - 23)</span>
+
+            <div class="q-block">
+                <div class="passage-box">«كَتَبَ الجُنْدِيُّ الرِّسَالَةَ بِدِقَّةٍ، وَأَرْسَلَهَا عَبْرَ اللاسِلْكِيِّ.»</div>
+                <div class="q-title">15. كلمة (الرِّسَالَةَ) مَفْعُولٌ بِهِ مفرد، وَعَلَامَةُ نَصْبِهِ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q15" value="الفتحة" onclick="checkAnswer('q15')"> الفَتْحَةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q15" value="الكسرة" onclick="checkAnswer('q15')"> الكَسْرَةُ</label>
+                </div>
+                <div class="feedback" id="fb-q15"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«اسْتَعَادَ الجَيْشُ المَصْرِيُّ الأَرَاضِيَ المَغْصُوبَةَ فِي حَرْبِ أُكْتُوبَرَ.»</div>
+                <div class="q-title">16. كلمة (الأَرَاضِيَ) (جمع تكسير) تُعْرَبُ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q16" value="مفعول به منصوب بالفتحة" onclick="checkAnswer('q16')"> مَفْعُولٌ بِهِ مَنْصُوبٌ وَعَلَامَةُ نَصْبِهِ الفَتْحَةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q16" value="فاعل" onclick="checkAnswer('q16')"> فَاعِلٌ مَرْفُوعٌ</label>
+                </div>
+                <div class="feedback" id="fb-q16"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«تَرْجَمَ الخُبَرَاءُ المَحَادَثَاتِ العَسْكَرِيَّةَ بِسُرْعَةٍ وَدِقَّةٍ.»</div>
+                <div class="q-title">17. كلمة (المَحَادَثَاتِ) (جمع مؤنث سالم) مَفْعُولٌ بِهِ مَنْصُوبٌ وَعَلَامَةُ نَصْبِهِ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q17" value="الكسرة" onclick="checkAnswer('q17')"> الكَسْرَةُ (لِأَنَّهُ جَمْعُ مُؤَنَّثٍ سَالِمٌ)</label>
+                    <label class="opt-btn"><input type="radio" name="q17" value="الفتحة" onclick="checkAnswer('q17')"> الفَتْحَةُ</label>
+                </div>
+                <div class="feedback" id="fb-q17"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«شَرَحَ المُعَلِّمُ القِصَصَ التَّارِيخِيَّةَ لِلتَّلَامِيذِ.»</div>
+                <div class="q-title">18. كلمة (القِصَصَ) جمع تكسير، إِعْرَابُهَا:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q18" value="مفعول به منصوب بالفتحة" onclick="checkAnswer('q18')"> مَفْعُولٌ بِهِ مَنْصُوبٌ وَعَلَامَةُ نَصْبِهِ الفَتْحَةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q18" value="خبر" onclick="checkAnswer('q18')"> خَبَرٌ مَرْفُوعٌ</label>
+                </div>
+                <div class="feedback" id="fb-q18"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«كَرَّمَتِ المَدْرَسَةُ الطَالِبَاتِ المِثَالِيَّاتِ فِي الحَفْلِ.»</div>
+                <div class="q-title">19. الضَبْطُ الصَّحِيحُ لآخِرِ كلمة (الطَالِبَات) هُوَ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q19" value="الطالباتِ" onclick="checkAnswer('q19')"> الطَّالِبَاتِ (بِالكَسْرِ)</label>
+                    <label class="opt-btn"><input type="radio" name="q19" value="الطالباتَ" onclick="checkAnswer('q19')"> الطَّالِبَاتَ (بِالفَتْحِ)</label>
+                </div>
+                <div class="feedback" id="fb-q19"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«طَرَحَ الجُنْدِيُّ اقْتِرَاحًا ذَكِيًّا لِحَلِّ المُشْكِلَةِ.»</div>
+                <div class="q-title">20. كلمة (اقْتِرَاحًا) تُعْرَبُ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q20" value="مفعول به منصوب بالفتحة" onclick="checkAnswer('q20')"> مَفْعُولٌ بِهِ مَنْصُوبٌ وَعَلَامَةُ نَصْبِهِ الفَتْحَةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q20" value="فاعل" onclick="checkAnswer('q20')"> فَاعِلٌ مَرْفُوعٌ</label>
+                </div>
+                <div class="feedback" id="fb-q20"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«يَسْتَقْبِلُ المَصْرِيُّ الضُّيُوفَ بِالتَّرْحِيبِ وَالكَرَمِ.»</div>
+                <div class="q-title">21. كلمة (الضُّيُوفَ) مَفْعُولٌ بِهِ مَنْصُوبٌ وَعَلَامَةُ نَصْبِهِ الفَتْحَةُ لِأَنَّهُ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q21" value="جمع تكسير" onclick="checkAnswer('q21')"> جَمْعُ تَكْسِيرٍ</label>
+                    <label class="opt-btn"><input type="radio" name="q21" value="جمع مذكر سالم" onclick="checkAnswer('q21')"> جَمْعُ مُذَكَّرٍ سَالِمٌ</label>
+                </div>
+                <div class="feedback" id="fb-q21"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«سَجَّلَتِ المُمَرِّضَاتُ المُلَاحَظَاتِ فِي السِّجِلِّ.»</div>
+                <div class="q-title">22. كلمة (المُلَاحَظَاتِ) تُعْرَبُ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q22" value="مفعول به منصوب بالكسرة" onclick="checkAnswer('q22')"> مَفْعُولٌ بِهِ مَنْصُوبٌ وَعَلَامَةُ نَصْبِهِ الكَسْرَةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q22" value="مفعول به منصوب بالفتحة" onclick="checkAnswer('q22')"> مَفْعُولٌ بِهِ مَنْصُوبٌ وَعَلَامَةُ نَصْبِهِ الفَتْحَةُ</label>
+                </div>
+                <div class="feedback" id="fb-q22"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="passage-box">«قَرَأَ الطَّالِبُ كِتَابًا عَنْ حَرْبِ أُكْتُوبَرَ.»</div>
+                <div class="q-title">23. كلمة (كِتَابًا) تُعْرَبُ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q23" value="مفعول به منصوب بالفتحة" onclick="checkAnswer('q23')"> مَفْعُولٌ بِهِ مَنْصُوبٌ وَعَلَامَةُ نَصْبِهِ الفَتْحَةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q23" value="خبر" onclick="checkAnswer('q23')"> خَبَرٌ مَرْفُوعٌ</label>
+                </div>
+                <div class="feedback" id="fb-q23"></div>
+            </div>
+        </div>
+
+        <!-- المحور الرابع: أسئلة المفردات -->
+        <div class="card">
+            <span class="section-header">رابعاً: مَفْرَدَاتُ دَرْسِ "لُغَةُ النَّصْرِ" (من صورة القاموس) (الأسئلة 24 - 32)</span>
+
+            <div class="q-block">
+                <div class="q-title">24. مَعْنَى كلمة (حَانَ) فِي القَامُوسِ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q24" value="اقترب" onclick="checkAnswer('q24')"> اقْتَرَبَ</label>
+                    <label class="opt-btn"><input type="radio" name="q24" value="ابتعد" onclick="checkAnswer('q24')"> ابْتَعَدَ</label>
+                </div>
+                <div class="feedback" id="fb-q24"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">25. مَعْنَى كلمة (مُتَحَمِّسًا):</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q25" value="متلهفا" onclick="checkAnswer('q25')"> مُتَلَهِّفًا - رَاغِبًا بِشِدَّةٍ</label>
+                    <label class="opt-btn"><input type="radio" name="q25" value="خائفا" onclick="checkAnswer('q25')"> خَائِفًا وَمُتَرَدِّدًا</label>
+                </div>
+                <div class="feedback" id="fb-q25"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">26. مَعْنَى كلمة (اقْتَرَحَ):</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q26" value="قدم رأيا" onclick="checkAnswer('q26')"> قَدَّمَ رَأْيًا</label>
+                    <label class="opt-btn"><input type="radio" name="q26" value="رفض" onclick="checkAnswer('q26')"> رَفَضَ الأَمْرَ</label>
+                </div>
+                <div class="feedback" id="fb-q26"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">27. مَعْنَى كلمة (الشِّفْرَةُ):</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q27" value="رمز يستعمل للتفاهم السري" onclick="checkAnswer('q27')"> رَمْزٌ يُسْتَعْمَلُ لِلتَّفَاهُمِ السِّرِّيِّ</label>
+                    <label class="opt-btn"><input type="radio" name="q27" value="لغة معروفة للجميع" onclick="checkAnswer('q27')"> لُغَةٌ مَعْرُوفَةٌ لِلْجَمِيعِ</label>
+                </div>
+                <div class="feedback" id="fb-q27"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">28. مَعْنَى كلمة (اسْتِرْدَادُ):</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q28" value="استعادة" onclick="checkAnswer('q28')"> اسْتِعَادَةُ - إِرْجَاعُ</label>
+                    <label class="opt-btn"><input type="radio" name="q28" value="ضياع" onclick="checkAnswer('q28')"> ضَيَاعُ وَخَسَارَةُ</label>
+                </div>
+                <div class="feedback" id="fb-q28"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">29. مُضَادُّ كلمة (نَصْرٌ):</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q29" value="هزيمة" onclick="checkAnswer('q29')"> هَزِيمَةٌ</label>
+                    <label class="opt-btn"><input type="radio" name="q29" value="قوة" onclick="checkAnswer('q29')"> قُوَّةٌ</label>
+                </div>
+                <div class="feedback" id="fb-q29"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">30. جَمْعُ كلمة (الشِّفْرَةُ) فِي القَامُوسِ:</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q30" value="الشفرات" onclick="checkAnswer('q30')"> الشِّفَرَاتُ</label>
+                    <label class="opt-btn"><input type="radio" name="q30" value="أشفار" onclick="checkAnswer('q30')"> أَشْفَارٌ</label>
+                </div>
+                <div class="feedback" id="fb-q30"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">31. مُفْرَدُ كلمة (الرَّسَائِلُ):</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q31" value="الرسالة" onclick="checkAnswer('q31')"> الرِّسَالَةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q31" value="الرسول" onclick="checkAnswer('q31')"> الرَّسُولُ</label>
+                </div>
+                <div class="feedback" id="fb-q31"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">32. مُفْرَدُ كلمة (خُبَرَاءُ):</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q32" value="خبير" onclick="checkAnswer('q32')"> خَبِيرٌ</label>
+                    <label class="opt-btn"><input type="radio" name="q32" value="الخبر" onclick="checkAnswer('q32')"> الخَبَرُ</label>
+                </div>
+                <div class="feedback" id="fb-q32"></div>
+            </div>
+        </div>
+
+        <!-- المحور الخامس: أضواء على النص -->
+        <div class="card">
+            <span class="section-header">خامساً: أِضْوَاءٌ عَلَى النَّصِّ (من صورة أضواء على النص) (الأسئلة 33 - 40)</span>
+
+            <div class="q-block">
+                <div class="q-title">33. مَا اسْمُ القِصَّةِ الَّتِي حَكَتْهَا الجَدَّةُ لِـ «آدَمَ»؟</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q33" value="اللغة السحرية" onclick="checkAnswer('q33')"> اللُّغَةُ السِّحْرِيَّةُ</label>
+                    <label class="opt-btn"><input type="radio" name="q33" value="حرب اكتوبر" onclick="checkAnswer('q33')"> أَبْطَالُ أُكْتُوبَرَ</label>
+                </div>
+                <div class="feedback" id="fb-q33"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">34. فِيمَ كَانَ يُفَكِّرُ القَادَةُ المَصْرِيُّونَ قَبْلَ حَرْبِ أُكْتُوبَرَ؟</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q34" value="كيف يتواصلون دون فهم العدو" onclick="checkAnswer('q34')"> كَيْفَ يَتَوَاصَلُونَ عَبْرَ الأَجْهِزَةِ دُونَ أَنْ يَفْهَمَ العَدُوُّ محَادَثَاتِهِمْ</label>
+                    <label class="opt-btn"><input type="radio" name="q34" value="شراء أجهزة جديدة" onclick="checkAnswer('q34')"> شِرَاءِ أجهزة لاسلكية جديدة</label>
+                </div>
+                <div class="feedback" id="fb-q34"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">35. مَنْ صَاحِبُ اقْتِرَاحِ اسْتِخْدَامِ اللُّغَةِ النُّوبِيَّةِ كَشِفْرَةٍ؟</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q35" value="أحمد إدريس" onclick="checkAnswer('q35')"> الجُنْدِيُّ أَحْمَدُ إِدْرِيسُ</label>
+                    <label class="opt-btn"><input type="radio" name="q35" value="الجدة" onclick="checkAnswer('q35')"> الجَدَّةُ</label>
+                </div>
+                <div class="feedback" id="fb-q35"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">36. أَيْنَ تَقَعُ بِلَادُ النُّوبَةِ؟ وَبِمَ يَتَمَيَّزُ أَهْلُهَا؟</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q36" value="أقصى جنوب مصر" onclick="checkAnswer('q36')"> فِي أَقْصَى جَنُوبِ مِصْرَ، وَيَتَمَيَّزُونَ بِالطَّيِّبَةِ وَالكَرَمِ وَحُبِّ الوَطَنِ</label>
+                    <label class="opt-btn"><input type="radio" name="q36" value="شمال مصر" onclick="checkAnswer('q36')"> فِي شَمَالِ مِصْرَ على البحر المتوسط</label>
+                </div>
+                <div class="feedback" id="fb-q36"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">37. لِمَاذَا كَانَ اخْتِيَارُ اللُّغَةِ النُّوبِيَّةِ اخْتِيَارًا مُوَفَّقًا؟</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q37" value="لأنها تختلف عن العربية ولا يعرفها غير أهلها" onclick="checkAnswer('q37')"> لِأَنَّهَا تَخْتَلِفُ عَنِ العَرَبِيَّةِ وَلَا يَعْرِفُهَا غَيْرُ أَهْلِهَا فَلَا يَسْتَطِيعُ الأَعْدَاءُ فَهْمَهَا</label>
+                    <label class="opt-btn"><input type="radio" name="q37" value="لأنها مكتوبة" onclick="checkAnswer('q37')"> لِأَنَّهَا كَانَتْ مَكْتُوبَةً فِي كُتُبٍ كَثِيرَةٍ</label>
+                </div>
+                <div class="feedback" id="fb-q37"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">38. مَا مَوْقِفُ الرَّئِيسِ السَّادَاتِ مِنْ اقْتِرَاحِ الجُنْدِيِّ أَحْمَد إِدْرِيس؟</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q38" value="أقر اقتراحه" onclick="checkAnswer('q38')"> أَقَرَّ اقْتِرَاحَهُ وَأَصْبَحَتِ اللُّغَةُ النُّوبِيَّةُ هِيَ الشِّفْرَةُ المُسْتَخْدَمَةَ</label>
+                    <label class="opt-btn"><input type="radio" name="q38" value="رفض الاقتراح" onclick="checkAnswer('q38')"> رَفَضَ الاِقْتِرَاحَ وَاسْتَبْدَلَهُ بِغَيْرِهِ</label>
+                </div>
+                <div class="feedback" id="fb-q38"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">39. مَا نَتِيجَةُ اسْتِخْدَامِ اللُّغَةِ النُّوبِيَّةِ أَثْنَاءَ الحَرْبِ؟</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q39" value="لم يستطع خبراء اللغات في إسرائيل فك الشفرة" onclick="checkAnswer('q39')"> لَمْ يَسْتَطِعْ خُبَرَاءُ اللُّغَاتِ فِي إِسْرَائِيلَ فُكَّ شِفْرَةِ الجَيْشِ المَصْرِيِّ</label>
+                    <label class="opt-btn"><input type="radio" name="q39" value="استطاع الأعداء فهمها" onclick="checkAnswer('q39')"> اسْتَطَاعَ الأَعْدَاءُ فَهْمَ الرَّسَائِلِ سَرِيعًا</label>
+                </div>
+                <div class="feedback" id="fb-q39"></div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-title">40. مَا ثَمَرَةُ حَرْبِ أُكْتُوبَرَ المَجِيدَةِ؟</div>
+                <div class="options-group">
+                    <label class="opt-btn"><input type="radio" name="q40" value="استرداد سيناء" onclick="checkAnswer('q40')"> اسْتِرْدَادُ سِينَاءَ الَّتِي احْتَلَّهَا العَدُوُّ الإِسْرَائِيلِيُّ</label>
+                    <label class="opt-btn"><input type="radio" name="q40" value="بناء المدارس" onclick="checkAnswer('q40')"> بِنَاءُ المَدَارِسِ وَالمُسْتَشْفَيَاتِ</label>
+                </div>
+                <div class="feedback" id="fb-q40"></div>
+            </div>
+
+        </div>
+
+        <p class="alert-message" id="alertBox">يرجى كتابة اسم الطالب أولاً!</p>
+        <button type="button" class="btn-submit" onclick="evaluateQuiz()">عرض النتيجة النهائية والدرجة</button>
+    </form>
+
+    <!-- Result Card -->
+    <div class="card" id="result-box">
+        <h2>نتيجة الاختبار التفاعلي</h2>
+        <p id="displayName" style="font-size: 1.3rem; font-weight: 700; margin-top: 10px;"></p>
+        <div class="score-output" id="scoreValue"></div>
+    </div>
+
+</div>
+
+<script>
+    const quizData = {
+        q1: { correct: 'أحمد', explain: 'أسماء الأشخاص المبدوءة بألف تكون همزتها همزة قطع وتُرسم فوقها الهمزة (أَ).' },
+        q2: { correct: 'الجيش', explain: 'أي كلمة تبدأ بـ (الـ) التعريف تكون الألف فيها ألف وصل ولا ترسم فوقها همزة.' },
+        q3: { correct: 'وصل', explain: 'المصادر والأسئلة المبدوءة بألف وصل تثبت نطقا في أول الكلام وتختفي عند وصلها ولا يكتب عليها همزة.' },
+        q4: { correct: 'صحيحة', explain: '(أَرْسَلَ) فعل ماضٍ رباعي همزته قطع، و(الجُنْدِيُّ)، (الرِّسَالَةَ) تبدأ بـ (الـ) التعريف فألفهما ألف وصل.' },
+        q5: { correct: 'حرف', explain: 'جميع الحروف المبدوءة بألف همزتها قطع (مثل: إلى، إن، أن، أو)، ما عدا (الـ) التعريف.' },
+        q6: { correct: 'الواو أو الفاء', explain: 'نضع قبل الكلمة واواً؛ فإن نُطقت الهمزة فهي قطع (وَأَحْمَد)، وإن سقطت فهي وصل (وَاسْتَمَعَ).' },
+        q7: { correct: 'تسقط نطقا', explain: 'ألف الوصل تُسقط في النطق عند وصل الكلام بما قبله.' },
+        q8: { correct: 'مبتدأ مرفوع بالضمة', explain: 'الوطنُ: اسم مفرد وقع في بداية الجملة فيُعرب مبتدأ مرفوع وعلامة رفعه الضمة.' },
+        q9: { correct: 'مبتدأ مرفوع بالألف', explain: 'العَالِمَانِ: اسم مثنى بدأت به الجملة الاسمية، والمثنى يُرفع وعلامة رفعه الألف.' },
+        q10: { correct: 'خبر مرفوع بالواو', explain: 'مُخْلِصُونَ: خبر تمم معنى المبتدأ، وهو جمع مذكر سالم يُرفع وعلامة رفعه الواو.' },
+        q11: { correct: 'مبتدأ مرفوع بالضمة', explain: 'الأُمَّهَاتُ: جمع مؤنث سالم بدأت به الجملة، وجمع المؤنث السالم يُرفع وعلامة رفعه الضمة.' },
+        q12: { correct: 'خبر مرفوع بالضمة', explain: 'أَقْوِيَاءُ: جمع تكسير تمم معنى المبتدأ، وجمع التكسير يُرفع وعلامة رفعه الضمة.' },
+        q13: { correct: 'الألف', explain: 'شُجَاعَانِ: خبر مرفوع وعلامة رفعه الألف لأنه مثنى.' },
+        q14: { correct: 'الواو', explain: 'المُهَنْدِسُونَ: مبتدأ مرفوع وعلامة رفعه الواو لأنه جمع مذكر سالم.' },
+        q15: { correct: 'الفتحة', explain: 'الرسالةَ: اسم مفرد وقع مفعولاً به، وعلامة نصب المفعول به المفرد الفتحة.' },
+        q16: { correct: 'مفعول به منصوب بالفتحة', explain: 'الأراضيَ: جمع تكسير وقع عليه فعل الفاعل (استعاد) فيُعرب مفعولاً به منصوباً بالفتحة.' },
+        q17: { correct: 'الكسرة', explain: 'المحادثاتِ: جمع مؤنث سالم وقع مفعولاً به، وجمع المؤنث السالم يُنصب وعلامة نصبه الكسرة نيابة عن الفتحة.' },
+        q18: { correct: 'مفعول به منصوب بالفتحة', explain: 'القصصَ: جمع تكسير وقع مفعولاً به وعلامة نصبه الفتحة.' },
+        q19: { correct: 'الطالباتِ', explain: 'الطالباتِ: مفعول به منصوب وعلامة نصبه الكسرة لأنه جمع مؤنث سالم.' },
+        q20: { correct: 'مفعول به منصوب بالفتحة', explain: 'اقترحاً: اسم مفرد وقع مفعولاً به منصوباً وعلامة نصبه الفتحة.' },
+        q21: { correct: 'جمع تكسير', explain: 'الضيوفَ: جمع تكسير ومفرده (ضيف)، ويُنصب بالفتحة.' },
+        q22: { correct: 'مفعول به منصوب بالكسرة', explain: 'الملاحظاتِ: جمع مؤنث سالم ينتهي بألف وتاء، وعلامة نصبه الكسرة.' },
+        q23: { correct: 'مفعول به منصوب بالفتحة', explain: 'كتاباً: مفعول به منصوب وعلامة نصبه الفتحة الظاهرة.' },
+        q24: { correct: 'اقترب', explain: 'معنى حان في جدول المفردات المرفق: اقترب[span_0](start_span)[span_0](end_span).' },
+        q25: { correct: 'متلهفا', explain: 'معنى متحمسًا في جدول المفردات المرفق: متلهفًا - راغبًا بشدة[span_1](start_span)[span_1](end_span).' },
+        q26: { correct: 'قدم رأيا', explain: 'معنى اقترح في القاموس المرفق: قدّم رأيًا[span_2](start_span)[span_2](end_span).' },
+        q27: { correct: 'رمز يستعمل للتفاهم السري', explain: 'معنى الشفرة في الجدول المرفق: رمز يستعمل للتفاهم السري[span_3](start_span)[span_3](end_span).' },
+        q28: { correct: 'استعادة', explain: 'معنى استرداد في الجدول المرفق: استعادة - إرجاع[span_4](start_span)[span_4](end_span).' },
+        q29: { correct: 'هزيمة', explain: 'مضاد نصر في القاموس المرفق: هزيمة[span_5](start_span)[span_5](end_span).' },
+        q30: { correct: 'الشفرات', explain: 'جمع الشفرة في الجدول المرفق: الشفرات[span_6](start_span)[span_6](end_span).' },
+        q31: { correct: 'الرسالة', explain: 'مفرد الرسائل في القاموس المرفق: الرسالة[span_7](start_span)[span_7](end_span).' },
+        q32: { correct: 'خبير', explain: 'مفرد خبراء في القاموس المرفق: خبير[span_8](start_span)[span_8](end_span).' },
+        q33: { correct: 'اللغة السحرية', explain: 'كما ورد في السؤال رقم 2 من أضواء على النص المرفق[span_9](start_span)[span_9](end_span).' },
+        q34: { correct: 'كيف يتواصلون دون فهم العدو', explain: 'كانوا يفكرون كيف يتواصلون عبر أجهزة الاتصال دون أن يفهم العدو محادثاتهم (السؤال 3)[span_10](start_span)[span_10](end_span).' },
+        q35: { correct: 'أحمد إدريس', explain: 'صاحب هذا الاقتراح هو الجندي أحمد إدريس (السؤال 4)[span_11](start_span)[span_11](end_span).' },
+        q36: { correct: 'أقصى جنوب مصر', explain: 'تقع بلاد النوبة في أقصى جنوب مصر ويتميز أهلها بالطيبة والكرم وحبهم لوطنهم (السؤال 5)[span_12](start_span)[span_12](end_span).' },
+        q37: { correct: 'لأنها تختلف عن العربية ولا يعرفها غير أهلها', explain: 'لأن اللغة النوبية تختلف عن العربية ولا يعرفها غير أهلها فلا يستطيع الأعداء فهم ما يقولون (السؤال 6)[span_13](start_span)[span_13](end_span).' },
+        q38: { correct: 'أقر اقتراحه', explain: 'أقر الرئيس السادات اقتراحه وأصبحت اللغة النوبية هي الشفرة المستخدمة (السؤال 7)[span_14](start_span)[span_14](end_span).' },
+        q39: { correct: 'لم يستطع خبراء اللغات في إسرائيل فك الشفرة', explain: 'لم يستطع خبراء اللغات في إسرائيل فك شفرة الجيش المصري (السؤال 9)[span_15](start_span)[span_15](end_span).' },
+        q40: { correct: 'استرداد سيناء', explain: 'ثمرة حرب أكتوبر هي استرداد سيناء التي احتلها العدو الإسرائيلي (السؤال 10)[span_16](start_span)[span_16](end_span).' }
+    };
+
+    function checkAnswer(qId) {
+        const selected = document.querySelector(`input[name="${qId}"]:checked`);
+        const feedbackDiv = document.getElementById(`fb-${qId}`);
+        const data = quizData[qId];
+
+        if (!selected) return;
+
+        if (selected.value === data.correct) {
+            feedbackDiv.className = "feedback correct";
+            feedbackDiv.innerHTML = `إِجَابَةٌ صَحِيحَةٌ 👏 <div class="explanation">💡 <b>الشرح والإعراب:</b> ${data.explain}</div>`;
+        } else {
+            feedbackDiv.className = "feedback wrong";
+            feedbackDiv.innerHTML = `إِجَابَةٌ خَاطِئَةٌ ❌ <br><b>الإِجَابَةُ الصَّحِيحَةُ:</b> (${data.correct}) <div class="explanation">💡 <b>الشرح والإعراب:</b> ${data.explain}</div>`;
+        }
+        feedbackDiv.style.display = "block";
+    }
+
+    function evaluateQuiz() {
+        const studentName = document.getElementById('studentName').value.trim();
+        const alertBox = document.getElementById('alertBox');
+        
+        if (studentName === "") {
+            alertBox.innerText = "يرجى كتابة اسم الطالب أو الطالبة أولاً!";
+            alertBox.style.display = "block";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+
+        let userScore = 0;
+        let totalQuestions = Object.keys(quizData).length;
+
+        // حساب الدرجة بناءً على الإجابات المختارة دون إجبار الطالب على حل جميع الأسئلة
+        for (let key in quizData) {
+            const selectedOpt = document.querySelector(`input[name="${key}"]:checked`);
+            if (selectedOpt && selectedOpt.value === quizData[key].correct) {
+                userScore++;
+            }
+        }
+
+        alertBox.style.display = "none";
+        document.getElementById('quizForm').style.display = "none";
+        document.getElementById('result-box').style.display = "block";
+        document.getElementById('displayName').innerText = "الطالب/ة: " + studentName;
+        document.getElementById('scoreValue').innerText = `الدرجة الحاصل عليها: ${userScore} من ${totalQuestions}`;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
