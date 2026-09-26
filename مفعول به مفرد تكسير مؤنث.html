@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امتحان النحو والإملاء - الصف الخامس الابتدائي</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-option {
+            transition: all 0.25s ease;
+        }
+        .btn-option:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="py-6 px-3 sm:px-6">
+
+    <div class="max-w-4xl mx-auto">
+
+        <!-- ==================== لوحة تكريم طلاب الشهر ==================== -->
+        <section class="mb-8 relative overflow-hidden rounded-3xl bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 p-1 shadow-2xl animate-pulse-subtle">
+            <div class="bg-slate-900/90 backdrop-blur-md rounded-[22px] p-6 sm:p-8 text-center text-white relative z-10">
+                
+                <!-- عناصر ديكورية خلفية -->
+                <div class="absolute top-2 right-4 text-amber-400 opacity-20 text-4xl sm:text-6xl"><i class="fa-solid fa-star"></i></div>
+                <div class="absolute bottom-2 left-4 text-rose-400 opacity-20 text-4xl sm:text-6xl"><i class="fa-solid fa-crown"></i></div>
+
+                <!-- شارة لوحة الشرف -->
+                <div class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 font-extrabold px-5 py-2 rounded-full text-xs sm:text-sm shadow-lg mb-4 transform hover:scale-105 transition">
+                    <i class="fa-solid fa-award text-base sm:text-lg"></i>
+                    <span>لوحة الشرف وتكريم المبدعين</span>
+                    <i class="fa-solid fa-award text-base sm:text-lg"></i>
+                </div>
+
+                <h2 class="text-2xl sm:text-4xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-200 to-rose-300">
+                    🏆 نجوم وطالبات الشهر المتميزين 🏆
+                </h2>
+                <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-lg mx-auto font-medium">
+                    تقديراً للجهود المتميزة والأداء الرائع في مادة اللغة العربية.. نتمنى لكم دوام التوفيق والنجاح!
+                </p>
+
+                <!-- بطاقات الطلاب المكرمين بدون ترتيب -->
+                <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 max-w-2xl mx-auto">
+                    
+                    <!-- طالب 1 -->
+                    <div class="flex-1 min-w-[200px] max-w-[260px] bg-gradient-to-b from-slate-800 to-slate-900 border-2 border-amber-400/50 hover:border-amber-400 rounded-2xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300">
+                        <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-gradient-to-tr from-amber-400 to-rose-400 flex items-center justify-center text-slate-900 text-2xl font-black shadow-md">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-black text-amber-300 mb-1">ريتال حسن</h3>
+                        <span class="inline-block bg-amber-500/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-400/30">
+                            ⭐ طالِبةٌ مُتَفَوِّقَةٌ
+                        </span>
+                    </div>
+
+                    <!-- طالب 2 -->
+                    <div class="flex-1 min-w-[200px] max-w-[260px] bg-gradient-to-b from-slate-800 to-slate-900 border-2 border-purple-400/50 hover:border-purple-400 rounded-2xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300">
+                        <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-gradient-to-tr from-purple-400 to-indigo-400 flex items-center justify-center text-slate-900 text-2xl font-black shadow-md">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-black text-purple-300 mb-1">مالك شلبي</h3>
+                        <span class="inline-block bg-purple-500/20 text-purple-300 text-xs font-bold px-3 py-1 rounded-full border border-purple-400/30">
+                            ⭐ طَالِبٌ مُتَفَوِّقٌ
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ==================== نهاية لوحة التكريم ==================== -->
+
+        <!-- Header Container -->
+        <header class="glass-card rounded-3xl p-6 mb-6 shadow-xl border-t-4 border-indigo-600 text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-indigo-100 rounded-full blur-2xl opacity-50"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-100 rounded-full blur-2xl opacity-50"></div>
+            
+            <span class="bg-indigo-100 text-indigo-800 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full inline-block mb-3 shadow-sm">
+                <i class="fa-solid fa-graduation-cap ml-1"></i> الصف الخامس الابتدائي - اللغة العربية
+            </span>
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-800 mb-2">
+                اختبار النحو والإملاء التفاعلي (30 سؤالاً)
+            </h1>
+            <p class="text-xs sm:text-base text-slate-600 mb-4 font-medium">
+                يشمل: القطع والوصل | الهمزة المتطرفة على السطر | المبتدأ والخبر | الفاعل | المفعول به
+            </p>
+
+            <!-- Teacher Info Header Badge -->
+            <div class="inline-flex flex-wrap items-center justify-center gap-3 bg-gradient-to-r from-slate-800 to-indigo-950 text-white px-5 py-2.5 rounded-2xl shadow-md text-sm">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-user-tie text-amber-400"></i>
+                    <span>إعداد: <strong class="text-amber-300 font-bold">أستاذ أحمد وحيد</strong></span>
+                </div>
+                <span class="hidden sm:inline text-slate-500">|</span>
+                <div class="flex items-center gap-2 text-slate-200 dir-ltr">
+                    <i class="fa-solid fa-phone text-emerald-400"></i>
+                    <span class="font-mono text-xs sm:text-sm">01030353036</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Student Name Input Screen -->
+        <div id="start-screen" class="glass-card rounded-3xl p-6 sm:p-10 shadow-xl text-center">
+            <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
+                <i class="fa-solid fa-user-pen"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-2">مرحباً بك يا بطل!</h2>
+            <p class="text-slate-600 mb-6 text-sm sm:text-base">يرجى كتابة اسمك الثلاثي لبدء اختبار اللغة العربية التفاعلي</p>
+            
+            <div class="max-w-md mx-auto mb-6">
+                <input type="text" id="student-name-input" placeholder="أدخل اسمك هنا..." 
+                    class="w-full px-5 py-3.5 rounded-2xl border-2 border-indigo-200 focus:border-indigo-600 focus:outline-none text-center font-bold text-slate-800 text-lg shadow-sm transition">
+                <p id="name-error" class="text-red-500 text-xs font-bold mt-2 hidden"><i class="fa-solid fa-triangle-exclamation"></i> يرجى إدخال الاسم قبل البدء!</p>
+            </div>
+
+            <button onclick="startExam()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg hover:shadow-indigo-300 transition-all text-lg w-full sm:w-auto">
+                ابدأ الاختبار الآن <i class="fa-solid fa-arrow-left mr-2"></i>
+            </button>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="hidden space-y-6">
+            <!-- Progress Bar -->
+            <div class="glass-card rounded-2xl p-4 shadow-md flex items-center justify-between gap-4">
+                <div class="flex items-center gap-2 text-slate-700 font-bold text-sm sm:text-base">
+                    <i class="fa-solid fa-user-graduate text-indigo-600"></i>
+                    <span id="display-student-name" class="text-indigo-900">--</span>
+                </div>
+                <div class="flex-1 max-w-xs mx-2">
+                    <div class="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
+                        <div id="progress-bar" class="bg-indigo-600 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="text-xs sm:text-sm font-bold text-slate-600">
+                    السؤال <span id="current-q-num" class="text-indigo-600 font-black">1</span> من 30
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div id="question-card" class="glass-card rounded-3xl p-6 sm:p-8 shadow-xl relative">
+                <!-- Badges -->
+                <div class="flex items-center justify-between mb-4">
+                    <span id="question-category" class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full">
+                        --
+                    </span>
+                    <span id="question-type-badge" class="bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1 rounded-full border border-slate-200">
+                        --
+                    </span>
+                </div>
+
+                <!-- Question Text -->
+                <h3 id="question-text" class="text-lg sm:text-2xl font-bold text-slate-800 leading-relaxed mb-6">
+                    --
+                </h3>
+
+                <!-- Options Grid -->
+                <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6">
+                    <!-- Options injected by JS -->
+                </div>
+
+                <!-- Explanation Box -->
+                <div id="explanation-box" class="hidden rounded-2xl p-4 sm:p-5 mb-6 border transition-all animate-fade-in">
+                    <div class="flex items-center gap-2 font-bold mb-2 text-base sm:text-lg" id="explanation-title">
+                        <!-- Icon & Title -->
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 text-xs sm:text-sm leading-relaxed font-medium">
+                        <!-- Explanation Content -->
+                    </p>
+                </div>
+
+                <!-- Next Question Button -->
+                <div class="flex justify-end">
+                    <button id="next-btn" onclick="nextQuestion()" disabled 
+                        class="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold px-6 py-3 rounded-xl shadow-md transition flex items-center gap-2 text-sm sm:text-base">
+                        <span>السؤال التالي</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden glass-card rounded-3xl p-6 sm:p-10 shadow-2xl text-center">
+            <div id="result-icon" class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg">
+                <!-- Icon injected by JS -->
+            </div>
+            
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mb-2">نتيجة اختبار الصف الخامس الابتدائي</h2>
+            <p id="result-student-name" class="text-lg text-indigo-700 font-bold mb-4">--</p>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-sm mx-auto mb-6 shadow-inner">
+                <div class="text-4xl sm:text-5xl font-black text-indigo-600 mb-2" id="score-text">0 / 30</div>
+                <div class="text-sm font-bold text-slate-500" id="percentage-text">النسبة المئوية: 0%</div>
+                <div id="evaluation-tag" class="mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold"></div>
+            </div>
+
+            <p id="result-message" class="text-slate-700 font-medium mb-8 px-4 text-sm sm:text-base">
+                --
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="restartExam()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition text-sm sm:text-base">
+                    <i class="fa-solid fa-rotate-right ml-2"></i> إعادة الاختبار
+                </button>
+                <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition text-sm sm:text-base">
+                    <i class="fa-solid fa-print ml-2"></i> طباعة النتيجة
+                </button>
+            </div>
+
+            <!-- Footer Teacher Info in Result -->
+            <div class="mt-10 pt-6 border-t border-slate-200 text-xs text-slate-500">
+                <p class="font-bold text-slate-700">إعداد الأستاذ: أحمد وحيد</p>
+                <p class="font-mono mt-1">تليفون: 01030353036</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-8 text-center text-xs text-slate-500 font-medium">
+            <p>جميع الحقوق محفوظة © للصف الخامس الابتدائي | إعداد أ/ أحمد وحيد (01030353036)</p>
+        </footer>
+    </div>
+
+    <script>
+        // Questions Data Grade 5 (30 Questions including Hamzat Qat', Wasl, and Hamza Mutatarrifa)
+        const questionsData = [
+            // --- قسم همزة القطع وألف الوصل (5 أسئلة) ---
+            {
+                category: "الإملاء: القطع والوصل",
+                type: "تمييز الكلمات",
+                question: "أيّ من الكلمات التالية تبدأ بـ (همزة قطع) تُكتب وتُنطق؟",
+                options: ["الْمَدْرَسَة", "اكْتُبْ", "أَحْمَد", "اسْتَمَعَ"],
+                correct: 2,
+                explanation: "كلمة (أَحْمَد) همزتها همزة قطع لأنها اسم وتبدأ بـ (أ) وتُرسم الهمزة وتُنطق دائماً."
+            },
+            {
+                category: "الإملاء: القطع والوصل",
+                type: "تصويب خطأ إملائي",
+                question: "صوب الخطأ الإملائي في الجملة: «اقبلَ المعلمُ بإبتسامةٍ جميلةٍ».",
+                options: ["أَقْبَلَ - بِابْتِسَامَةٍ", "اقبل - بابتسامة", "أقبل - بإبتسامة", "إقبل - بابتسامة"],
+                correct: 0,
+                explanation: "(أَقْبَلَ) فعل ماضٍ همزته همزة قطع، أما (ابتسامة) فتبدأ بـ ألف وصل الصواب «بِابْتِسَامَةٍ» بدون همزة."
+            },
+            {
+                category: "الإملاء: القطع والوصل",
+                type: "قاعدة الحروف",
+                question: "كل الحروف التالية تبدأ بـ (همزة قطع) ما عدا حرفاً واحداً يبدأ بـ (ألف وصل) وهو:",
+                options: ["إِلَى", "أَوْ", "أَنَّ", "الـ (أداة التعريف)"],
+                correct: 3,
+                explanation: "أداة التعريف (الـ) في مثل «الكتاب» تبدأ بـ ألف وصل دائماً، أما بقية الحروف همزتها همزة قطع."
+            },
+            {
+                category: "الإملاء: القطع والوصل",
+                type: "تحديد ألف الوصل",
+                question: "«اسْتَمَعَ التِّلْمِيذُ إِلَى الشَّرْحِ». الكلمة التي تبدأ بـ (همزة قطع) في الجملة هي:",
+                options: ["اسْتَمَعَ", "التِّلْمِيذُ", "إِلَى", "الشَّرْحِ"],
+                correct: 2,
+                explanation: "(إِلَى) حرف وتبدأ بـ همزة قطع مكسورة (إِ)."
+            },
+            {
+                category: "الإملاء: القطع والوصل",
+                type: "اختيار الكلمة الصحيحة",
+                question: "«......... الطَّالِبُ فِي الاِمْتِحَانِ». اختر الكلمة المكتوبة إملائياً بشكل صحيح:",
+                options: ["انْتَصَرَ", "أَنْتَصَرَ", "إِنْتَصَرَ", "أنْتَصرَ"],
+                correct: 0,
+                explanation: "(انْتَصَرَ) فعل تبدأ بـ ألف وصل لا تُكتب فوقها ولا تحتها همزة."
+            },
+
+            // --- قسم الهمزة المتطرفة على السطر (5 أسئلة) ---
+            {
+                category: "الإملاء: الهمزة المتطرفة",
+                type: "الهمزة بعد مد",
+                question: "تُكتب الهمزة المتطرفة على السطر إذا كان الحرف الذي قبلها:",
+                options: ["مضمومًا", "حرف مد (ألف/واو/ياء) أو حرفاً ساكناً", "مكسورًا", "مفتوحًا"],
+                correct: 1,
+                explanation: "تُرسم الهمزة المتطرفة على السطر إذا سُبقت بحرف مد مثل (سماء - وضوء - جريء) أو بحرف ساكن صحيح مثل (دفء)."
+            },
+            {
+                category: "الإملاء: الهمزة المتطرفة",
+                type: "اختيار الكلمة الصحيحة",
+                question: "«نَشْعُرُ بِالـ ......... فِي فَصْلِ الشِّتَاءِ». اختر الكلمة الصحيحة إملائياً:",
+                options: ["دفئ", "دَفْءِ", "دفأ", "دفؤ"],
+                correct: 1,
+                explanation: "كلمة (دَفْء) تُرسم همزتها المتطرفة على السطر لأن الحرف الذي قبلها (الفاء) حرف ساكن."
+            },
+            {
+                category: "الإملاء: الهمزة المتطرفة",
+                type: "تصويب الخطأ الإملائي",
+                question: "صوب الخطأ الإملائي في الكلمة المخطوطة: «السَّمَائُ صَافِيَةٌ اليومَ».",
+                options: ["السَّمَاءُ", "السَّمَائةُ", "السَّمَأُ", "السَّمَؤُ"],
+                correct: 0,
+                explanation: "كلمة (السَّمَاءُ) تُرسم همزتها متطرفة على السطر لأنها مسبوقة بحرف مد (الألف)."
+            },
+            {
+                category: "الإملاء: الهمزة المتطرفة",
+                type: "الهمزة بعد الساكن",
+                question: "كلمة (شَيْء) كُتبت همزتها المتطرفة على السطر لأن ما قبلها وهو الياء:",
+                options: ["حرف متحرك بالفتح", "حرف ساكن", "حرف مضموم", "حرف مكسور"],
+                correct: 1,
+                explanation: "الياء في كلمة (شَيْء) حرف ساكن، والهمزة المتطرفة بعد الحرف الساكن تُكتب مفردة على السطر."
+            },
+            {
+                category: "الإملاء: الهمزة المتطرفة",
+                type: "تحديد الكلمة الصحيحة",
+                question: "أي الكلمات التالية كُتبت فيها الهمزة المتطرفة على السطر بشكل **صحيح**؟",
+                options: ["جُزْء", "جُزْأ", "جُزْؤ", "جُزْئ"],
+                correct: 0,
+                explanation: "تُكتب (جُزْء) بـ همزة متطرفة على السطر لأن ما قبلها (الزاي) حرف ساكن."
+            },
+
+            // --- قسم إعراب المبتدأ والخبر بعلامات الرفع (5 أسئلة) ---
+            {
+                category: "إعراب المبتدأ والخبر",
+                type: "علامات الإعراب",
+                question: "«العَالِمَانِ مُبْدِعَانِ». علامة رفع الخبر في الجملة هي:",
+                options: ["الضمة", "الألف", "الواو", "الكسرة"],
+                correct: 1,
+                explanation: "الخبر هو كلمة (مبدعان)، وهو مثنى فيُرفع وعلامة رفعه الألف."
+            },
+            {
+                category: "إعراب المبتدأ والخبر",
+                type: "إكمال الجملة",
+                question: "«الفَلاَّحُونَ ......... فِي عَمَلِهِمْ». اختر الكلمة المناسبة للخبر:",
+                options: ["مُجْتَهِدِينَ", "مُجْتَهِدُونَ", "مُجْتَهِدَانِ", "مُجْتَهِدٌ"],
+                correct: 1,
+                explanation: "المبتدأ (الفلاحون) جمع مذكر سالم، فالخبر يجب أن يكون جمع مذكر سالم مرفوع بالواو فتكون «مجتهدون»."
+            },
+            {
+                category: "إعراب المبتدأ والخبر",
+                type: "الضبط بالشكل",
+                question: "«الطَّالِبَاتُ مُتَفَوِّقَاتٌ». الضبط الصحيح لآخر المبتدأ (الطالبات):",
+                options: ["الطَّالِبَاتِ (بالكسرة)", "الطَّالِبَاتُ (بالضمة)", "الطَّالِبَاتَ (بالفتحة)", "الطَّالِبَاتْ (بالسكون)"],
+                correct: 1,
+                explanation: "(الطالباتُ) مبتدأ مرفوع وعلامة رفعه الضمة الظاهرة لأنه جمع مؤنث سالم."
+            },
+            {
+                category: "إعراب المبتدأ والخبر",
+                type: "استخراج وتحديد",
+                question: "«الأَزْهَارُ جَمِيلَةٌ فِي الحَدِيقَةِ». المبتدأ نوعه جمع تكسير، وعلامة رفعه:",
+                options: ["الألف", "الواو", "الضمة", "الكسرة"],
+                correct: 2,
+                explanation: "(الأزهار) جمع تكسير، وجمع التكسير يُرفع وعلامة رفعه الضمة."
+            },
+            {
+                category: "إعراب المبتدأ والخبر",
+                type: "تصويب الخطأ",
+                question: "صوب الخطأ: «المُهَنْدِسِينَ بَارِعُونَ».",
+                options: ["المُهَنْدِسَانِ بَارِعَانِ", "المُهَنْدِسُونَ بَارِعُونَ", "المُهَنْدِسَاتُ بَارِعَاتٌ", "المُهَنْدِسِينَ بَارِعِينَ"],
+                correct: 1,
+                explanation: "المبتدأ يجب أن يكون مرفوعاً، وجمع المذكر السالم يُرفع بالواو فيصبح «المهندسون بارعون»."
+            },
+
+            // --- قسم إعراب الفاعل (5 أسئلة) ---
+            {
+                category: "إعراب الفاعل",
+                type: "تحديد الفاعل",
+                question: "«يَحْتَفِلُ الْمُعَلِّمُونَ بِفَوْزِ الطُّلاَّبِ». الفاعل في الجملة هو:",
+                options: ["الطلابِ", "المعلمونَ", "فوزِ", "يحتفلُ"],
+                correct: 1,
+                explanation: "الذي قام بالفعل (يحتفل) هم (المعلمون)، فهو فاعل مرفوع وعلامة رفعه الواو."
+            },
+            {
+                category: "إعراب الفاعل",
+                type: "علامات الإعراب",
+                question: "«تُسَاعِدُ الطَّبِيبَاتُ الْمَرْضَى». علامة رفع الفاعل (الطبيباتُ):",
+                options: ["الألف", "الواو", "الضمة", "الكسرة"],
+                correct: 2,
+                explanation: "(الطبيباتُ) جمع مؤنث سالم، وجمع المؤنث السالم يُرفع وعلامة رفعه الضمة."
+            },
+            {
+                category: "إعراب الفاعل",
+                type: "تصويب الخطأ",
+                question: "صوب الخطأ في الجملة التالية: «قَرَأَ الطَّالِبَيْنِ القِصَّةَ».",
+                options: ["قرأ الطالبانِ القصةَ", "قرأ الطلابَ القصةَ", "قرأ الطالبُ القصةُ", "قرأ الطالبين القصةُ"],
+                correct: 0,
+                explanation: "الفاعل هنا مثنى، والمثنى يُرفع بالألف، فالصواب: «قرأ الطالبانِ القصةَ»."
+            },
+            {
+                category: "إعراب الفاعل",
+                type: "الضبط بالشكل",
+                question: "«يَبْنِي العُمَّالُ الْمَصَانِعَ». الضبط الإعرابي الصحيح لكلمة (العمالُ):",
+                options: ["العُمَّالِ", "العُمَّالَ", "العُمَّالُ", "العُمَّالْ"],
+                correct: 2,
+                explanation: "(العمالُ) فاعل مرفوع بالضمة لأنه جمع تكسير."
+            },
+            {
+                category: "إعراب الفاعل",
+                type: "اختيار متعدد",
+                question: "«يُشَارِكُ المتسابقانِ في السباقِ». علامة رفع الفاعل (المتسابقان):",
+                options: ["الضمة", "الواو", "الألف", "النون"],
+                correct: 2,
+                explanation: "الفاعل مثنى (المتسابقان)، والمثنى يُرفع وعلامة رفعه الألف."
+            },
+
+            // --- قسم إعراب المفعول به: المفرد وجمع التكسير (5 أسئلة) ---
+            {
+                category: "المفعول به (المفرد والجمع)",
+                type: "علامات الإعراب",
+                question: "«شَرَحَ الْمُعَلِّمُ الدَّرْسَ». كلمة (الدرسَ) مفعول به منصوب وعلامة نصبه:",
+                options: ["الضمة", "الفتحة", "الكسرة", "الألف"],
+                correct: 1,
+                explanation: "كلمة (الدرسَ) اسم مفرد، والاسم المفرد يُنصب وعلامة نصبه الفتحة."
+            },
+            {
+                category: "المفعول به (المفرد والجمع)",
+                type: "الضبط بالشكل",
+                question: "«كَتَبَ التِّلْمِيذُ ......... ». اختر الكلمة المضبوطة بالشكل الصحيح:",
+                options: ["رِسَالَةً", "رِسَالَةٌ", "رِسَالَةٍ", "رِسَالَةُ"],
+                correct: 0,
+                explanation: "موقع الكلمة مفعول به منصوب، والمفرد يُنصب بالفتحة فتصبح «رسالةً» بالتنوين بالفتح."
+            },
+            {
+                category: "المفعول به (المفرد والجمع)",
+                type: "علامات الإعراب",
+                question: "«قَرَأَ الأَبُ الكُتُبَ». علامة نصب المفعول به (الكتبَ) هي:",
+                options: ["الكسرة", "الياء", "الفتحة", "الضمة"],
+                correct: 2,
+                explanation: "كلمة (الكتبَ) جمع تكسير، وجمع التكسير يُنصب وعلامة نصبه الفتحة تماماً كالمفرد."
+            },
+            {
+                category: "المفعول به (المفرد والجمع)",
+                type: "تحديد الموقع الإعرابي",
+                question: "«يَزْرَعُ الفَلاَّحُ الأَشْجَارَ». إعراب كلمة (الأشجارَ):",
+                options: ["فاعل مرفوع بالضمة", "خبر مرفوع بالضمة", "مفعول به منصوب بالفتحة", "اسم مجرور بالكسرة"],
+                correct: 2,
+                explanation: "وقع عليها فعل الفاعل (الزراعة)، وهي جمع تكسير فتُعرب مفعولاً به منصوباً بالفتحة."
+            },
+            {
+                category: "المفعول به (المفرد والجمع)",
+                type: "تصويب الخطأ",
+                question: "«نَظَّمَ الشَّرْطِيُّ المُرُورُ». التصويب الصحيح لكلمة (المرور):",
+                options: ["المُرُورِ", "المُرُورَ", "المُرُورُ", "المُرُورٌ"],
+                correct: 1,
+                explanation: "(المرورَ) مفعول به منصوب وعلامة نصبه الفتحة الظاهرة."
+            },
+
+            // --- قسم إعراب المفعول به: جمع المؤنث السالم والربط الشامل (5 أسئلة) ---
+            {
+                category: "المفعول به (جمع المؤنث السالم)",
+                type: "علامات الإعراب",
+                question: "«كَرَّمَتِ المَدْرَسَةُ الطَّالِبَاتِ». علامة نصب المفعول به (الطالباتِ) هي:",
+                options: ["الفتحة", "الكسرة", "الياء", "الضمة"],
+                correct: 1,
+                explanation: "(الطالباتِ) جمع مؤنث سالم، وجمع المؤنث السالم يُنصب وعلامة نصبه الكسرة نيابة عن الفتحة."
+            },
+            {
+                category: "المفعول به (جمع المؤنث السالم)",
+                type: "تصويب الخطأ",
+                question: "صوب الخطأ: «يُحِبُّ اللهُ المُحْسِنَاتَ».",
+                options: ["المُحْسِنَاتُ", "المُحْسِنَاتِ", "المُحْسِنَاتٌ", "المُحْسِنَاتً"],
+                correct: 1,
+                explanation: "(المحسناتِ) مفعول به منصوب وعلامة نصبه الكسرة لأنه جمع مؤنث سالم."
+            },
+            {
+                category: "المفعول به (جمع المؤنث السالم)",
+                type: "إكمال الجملة",
+                question: "«شَاهَدْتُ ......... فِي السَّمَاءِ». اختر الجمع المضبوط إعرابياً:",
+                options: ["الطَّائِرَاتُ", "الطَّائِرَاتَ", "الطَّائِرَاتِ", "الطَّائِرَاتٌ"],
+                correct: 2,
+                explanation: "الموقع الإعرابي مفعول به منصوب، وجمع المؤنث السالم يُنصب بالكسرة فتختار «الطائراتِ»."
+            },
+            {
+                category: "شامل الإعراب",
+                type: "تحديد العلامات",
+                question: "في جملة: «قَدَّمَ الطَّالِبُ الإِجَابَاتِ». علامتا إعراب (الطالب) و(الإجابات) على التوالي:",
+                options: ["الضمة - الفتحة", "الضمة - الكسرة", "الفتحة - الكسرة", "الألف - الياء"],
+                correct: 1,
+                explanation: "(الطالبُ) فاعل مرفوع بالضمة، و(الإجاباتِ) مفعول به منصوب بالكسرة لأنه جمع مؤنث سالم."
+            },
+            {
+                category: "شامل الإعراب",
+                type: "تصويب خطأ جملة كاملة",
+                question: "أي الجمل التالية كُتِبَتْ بشكل إعرابي صحيح وسليم؟",
+                options: ["زَارَ السَّائِحِينَ الأَهْرَامَاتُ", "زَارَ السَّائِحُونَ الأَهْرَامَاتِ", "زَارَ السَّائِحُونَ الأَهْرَامَاتَ", "زَارَ السَّائِحِينَ الأَهْرَامَاتِ"],
+                correct: 1,
+                explanation: "(السائحون) فاعل مرفوع بالواو، و(الأهراماتِ) مفعول به جمع مؤنث سالم منصوب بالكسرة."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let studentName = "";
+        let selectedOption = null;
+
+        // Elements
+        const startScreen = document.getElementById('start-screen');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultScreen = document.getElementById('result-screen');
+        const studentNameInput = document.getElementById('student-name-input');
+        const nameError = document.getElementById('name-error');
+        const displayStudentName = document.getElementById('display-student-name');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQNum = document.getElementById('current-q-num');
+
+        const questionCategory = document.getElementById('question-category');
+        const questionTypeBadge = document.getElementById('question-type-badge');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const explanationBox = document.getElementById('explanation-box');
+        const explanationTitle = document.getElementById('explanation-title');
+        const explanationText = document.getElementById('explanation-text');
+        const nextBtn = document.getElementById('next-btn');
+
+        function startExam() {
+            const name = studentNameInput.value.trim();
+            if (name === "") {
+                nameError.classList.remove('hidden');
+                return;
+            }
+            nameError.classList.add('hidden');
+            studentName = name;
+            displayStudentName.textContent = studentName;
+
+            startScreen.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            selectedOption = null;
+            nextBtn.disabled = true;
+            explanationBox.classList.add('hidden');
+
+            const q = questionsData[currentQuestion];
+
+            // Progress
+            currentQNum.textContent = currentQuestion + 1;
+            const progressPercent = ((currentQuestion) / questionsData.length) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+
+            // Question Details
+            questionCategory.textContent = q.category;
+            questionTypeBadge.textContent = q.type;
+            questionText.textContent = q.question;
+
+            // Options
+            optionsContainer.innerHTML = "";
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = `btn-option text-right w-full p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-indigo-400 text-slate-800 font-bold text-sm sm:text-base flex items-center justify-between shadow-sm`;
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs text-transparent check-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                `;
+                btn.onclick = () => selectOption(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(index, btn) {
+            if (selectedOption !== null) return;
+            selectedOption = index;
+
+            const q = questionsData[currentQuestion];
+            const allBtns = optionsContainer.children;
+
+            for (let i = 0; i < allBtns.length; i++) {
+                allBtns[i].disabled = true;
+                allBtns[i].classList.remove('hover:border-indigo-400');
+            }
+
+            if (index === q.correct) {
+                score++;
+                btn.classList.remove('border-slate-200', 'bg-white');
+                btn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+                btn.querySelector('.check-icon').classList.remove('text-transparent', 'border-slate-300');
+                btn.querySelector('.check-icon').classList.add('bg-emerald-500', 'text-white', 'border-emerald-500');
+
+                showExplanation(true, q.explanation);
+            } else {
+                btn.classList.remove('border-slate-200', 'bg-white');
+                btn.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-900');
+                btn.querySelector('.check-icon').innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                btn.querySelector('.check-icon').classList.remove('text-transparent', 'border-slate-300');
+                btn.querySelector('.check-icon').classList.add('bg-rose-500', 'text-white', 'border-rose-500');
+
+                const correctBtn = allBtns[q.correct];
+                correctBtn.classList.remove('border-slate-200', 'bg-white');
+                correctBtn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+
+                showExplanation(false, q.explanation, q.options[q.correct]);
+            }
+
+            nextBtn.disabled = false;
+        }
+
+        function showExplanation(isCorrect, explanation, correctAnswerText = '') {
+            explanationBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');
+
+            if (isCorrect) {
+                explanationBox.classList.add('bg-emerald-50', 'border-emerald-200');
+                explanationTitle.className = 'flex items-center gap-2 font-bold mb-1 text-emerald-800 text-sm sm:text-base';
+                explanationTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> إجابة صحيحة! أحسنت يا بطل.`;
+                explanationText.innerHTML = explanation;
+            } else {
+                explanationBox.classList.add('bg-rose-50', 'border-rose-200');
+                explanationTitle.className = 'flex items-center gap-2 font-bold mb-1 text-rose-800 text-sm sm:text-base';
+                explanationTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600"></i> إجابة خاطئة! الإجابة الصحيحة هي: (${correctAnswerText})`;
+                explanationText.innerHTML = `<strong>الشرح والتصويب:</strong> ${explanation}`;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questionsData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            document.getElementById('result-student-name').textContent = `الطالب / الطالبة: ${studentName}`;
+            document.getElementById('score-text').textContent = `${score} / ${questionsData.length}`;
+            
+            const percentage = Math.round((score / questionsData.length) * 100);
+            document.getElementById('percentage-text').textContent = `النسبة المئوية: ${percentage}%`;
+
+            const resultIcon = document.getElementById('result-icon');
+            const evalTag = document.getElementById('evaluation-tag');
+            const resultMessage = document.getElementById('result-message');
+
+            if (percentage >= 90) {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-emerald-100 text-emerald-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-trophy"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800";
+                evalTag.textContent = "ممتاز جداً - بطل العربية";
+                resultMessage.textContent = "ما شاء الله! مستواك ممتاز للغاية في النحو والإملاء للصف الخامس الابتدائي. أداء بطل حقيقي!";
+            } else if (percentage >= 75) {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-blue-100 text-blue-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-star"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800";
+                evalTag.textContent = "جيد جداً - مجتهد";
+                resultMessage.textContent = "أحسنت! نتيجة جيدة جداً، قم بمراجعة الإجابات الخاطئة للتأكد من إتقان كافة القواعد تماماً.";
+            } else if (percentage >= 50) {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-amber-100 text-amber-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-thumbs-up"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800";
+                evalTag.textContent = "مقبول - تحتاج لمراجعة";
+                resultMessage.textContent = "لقد نجحت في الاختبار! يفضل أن تراجع دروس الهمزات وإعراب المفعول به والفاعل بتركيز أعمق.";
+            } else {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-rose-100 text-rose-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-book-open"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-rose-100 text-rose-800";
+                evalTag.textContent = "يحتاج إلى إعادة مذاكرة";
+                resultMessage.textContent = "لا بأس يا بطل، راجع القواعد والإملاء مع أستاذك أحمد وحيد وأعد الاختبار لتحقق الدرجة النهائية!";
+            }
+        }
+
+        function restartExam() {
+            currentQuestion = 0;
+            score = 0;
+            resultScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+            studentNameInput.value = "";
+        }
+    </script>
+</body>
+</html>
