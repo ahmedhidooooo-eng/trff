@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار اللغة العربية الشامل - الصف الثالث الابتدائي</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border: 2px solid #bbf7d0;
+        }
+        .btn-option {
+            transition: all 0.2s ease;
+        }
+        .btn-option:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.15);
+        }
+    </style>
+</head>
+<body class="py-6 px-3 sm:px-6">
+
+    <div class="max-w-3xl mx-auto">
+        <!-- Header Container -->
+        <header class="glass-card rounded-3xl p-5 mb-6 shadow-lg border-t-4 border-emerald-600 text-center relative overflow-hidden">
+            <span class="bg-emerald-100 text-emerald-800 text-xs sm:text-sm font-black px-4 py-1.5 rounded-full inline-block mb-3 shadow-sm">
+                <i class="fa-solid fa-graduation-cap ml-1 text-emerald-600"></i> الصف الثالث الابتدائي - لغتي الجميلة
+            </span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mb-2">
+                اختبار العربية الشامل (26 سؤالاً)
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-600 mb-4 font-bold">
+                أنواع الاسم وعلاماته | أنواع الفعل | التنوين | نوع الجملة | المفرد والمثنى والجمع | أسماء الإشارة
+            </p>
+
+            <!-- Teacher Info Header Badge -->
+            <div class="inline-flex flex-wrap items-center justify-center gap-3 bg-gradient-to-r from-emerald-700 to-teal-800 text-white px-5 py-2 rounded-2xl shadow-md text-xs sm:text-sm">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-user-tie text-amber-300"></i>
+                    <span>إعداد: <strong class="text-amber-200 font-bold">أستاذ أحمد وحيد</strong></span>
+                </div>
+                <span class="hidden sm:inline text-emerald-200">|</span>
+                <div class="flex items-center gap-2 text-emerald-100 dir-ltr">
+                    <i class="fa-solid fa-phone text-amber-300"></i>
+                    <span class="font-mono">01030353036</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Student Name Input Screen -->
+        <div id="start-screen" class="glass-card rounded-3xl p-6 sm:p-8 shadow-xl text-center">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-inner">
+                <i class="fa-solid fa-pen-ruler"></i>
+            </div>
+            <h2 class="text-2xl font-black text-slate-800 mb-2">مرحباً بك يا بطل اللغة العربية!</h2>
+            <p class="text-slate-600 mb-6 text-sm font-bold">يرجى كتابة اسمك لبدء الاختبار التفاعلي:</p>
+            
+            <div class="max-w-md mx-auto mb-6">
+                <input type="text" id="student-name-input" placeholder="أدخل اسمك الثلاثي هنا..." 
+                    class="w-full px-5 py-3.5 rounded-2xl border-2 border-emerald-300 focus:border-emerald-600 focus:outline-none text-center font-bold text-slate-800 text-lg shadow-sm transition">
+                <p id="name-error" class="text-red-500 text-xs font-bold mt-2 hidden"><i class="fa-solid fa-triangle-exclamation"></i> يرجى إدخال الاسم قبل البدء!</p>
+            </div>
+
+            <button onclick="startExam()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-black px-8 py-3.5 rounded-2xl shadow-lg hover:shadow-emerald-200 transition-all text-lg w-full sm:w-auto">
+                ابدأ الاختبار الآن <i class="fa-solid fa-play mr-2"></i>
+            </button>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="hidden space-y-5">
+            <!-- Progress Bar -->
+            <div class="glass-card rounded-2xl p-4 shadow-md flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2 text-slate-700 font-bold text-sm">
+                    <i class="fa-solid fa-user-graduate text-emerald-600 text-lg"></i>
+                    <span id="display-student-name" class="text-emerald-900 font-black">--</span>
+                </div>
+                <div class="flex-1 max-w-xs mx-2">
+                    <div class="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
+                        <div id="progress-bar" class="bg-emerald-600 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="text-xs sm:text-sm font-black text-slate-600">
+                    السؤال <span id="current-q-num" class="text-emerald-600 text-base">1</span> من 26
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div id="question-card" class="glass-card rounded-3xl p-5 sm:p-7 shadow-xl relative">
+                <div class="flex items-center justify-between mb-4">
+                    <span id="question-category" class="bg-amber-100 text-amber-800 text-xs font-black px-3 py-1 rounded-full">
+                        --
+                    </span>
+                    <span id="question-type-badge" class="bg-emerald-100 text-emerald-800 text-xs font-black px-3 py-1 rounded-full">
+                        --
+                    </span>
+                </div>
+
+                <!-- Question Text -->
+                <h3 id="question-text" class="text-lg sm:text-2xl font-black text-slate-800 leading-relaxed mb-6">
+                    --
+                </h3>
+
+                <!-- Options Grid -->
+                <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                    <!-- Options injected by JS -->
+                </div>
+
+                <!-- Explanation Box -->
+                <div id="explanation-box" class="hidden rounded-2xl p-4 mb-6 border transition-all">
+                    <div class="flex items-center gap-2 font-bold mb-1 text-sm sm:text-base" id="explanation-title">
+                        <!-- Title -->
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 text-xs sm:text-sm font-bold leading-relaxed">
+                        <!-- Explanation -->
+                    </p>
+                </div>
+
+                <!-- Next Button -->
+                <div class="flex justify-end">
+                    <button id="next-btn" onclick="nextQuestion()" disabled 
+                        class="bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black px-6 py-3 rounded-xl shadow-md transition flex items-center gap-2 text-sm sm:text-base">
+                        <span>السؤال التالي</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden glass-card rounded-3xl p-6 sm:p-8 shadow-2xl text-center">
+            <div id="result-icon" class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg">
+                <!-- Icon injected by JS -->
+            </div>
+            
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-800 mb-1">نتيجة اختبار الصف الثالث الابتدائي</h2>
+            <p id="result-student-name" class="text-lg text-emerald-700 font-black mb-4">--</p>
+
+            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 max-w-sm mx-auto mb-6 shadow-inner">
+                <div class="text-4xl font-black text-emerald-600 mb-1" id="score-text">0 / 26</div>
+                <div class="text-xs font-bold text-slate-500" id="percentage-text">النسبة المئوية: 0%</div>
+                <div id="evaluation-tag" class="mt-2 inline-block px-4 py-1 rounded-full text-xs font-black"></div>
+            </div>
+
+            <p id="result-message" class="text-slate-700 font-bold mb-6 text-sm sm:text-base">
+                --
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="restartExam()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-xl shadow-md transition text-sm">
+                    <i class="fa-solid fa-rotate-right ml-1"></i> إعادة الاختبار
+                </button>
+                <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold px-6 py-2.5 rounded-xl shadow-md transition text-sm">
+                    <i class="fa-solid fa-print ml-1"></i> طباعة النتيجة
+                </button>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-slate-200 text-xs text-slate-500">
+                <p class="font-bold text-slate-700">إعداد الأستاذ: أحمد وحيد</p>
+                <p class="font-mono mt-1">تليفون: 01030353036</p>
+            </div>
+        </div>
+
+        <footer class="mt-6 text-center text-xs text-slate-500 font-bold">
+            <p>جميع الحقوق محفوظة © للصف الثالث الابتدائي | إعداد أ/ أحمد وحيد (01030353036)</p>
+        </footer>
+    </div>
+
+    <script>
+        // Questions Data for Grade 3 Primary (26 Questions including أُولَئِكَ)
+        const questionsData = [
+            // --- 1. أنواع الاسم وعلاماته (4 أسئلة) ---
+            {
+                category: "أنواع الاسم وعلاماته",
+                type: "أنواع الاسم",
+                question: "كلمة (أَسَدٌ) تدل على اسم:",
+                options: ["جماد", "حيوان", "نبات", "إنسان"],
+                correct: 1, // ب
+                explanation: "(أَسَدٌ) اسم يدل على حيوان."
+            },
+            {
+                category: "أنواع الاسم وعلاماته",
+                type: "علامات الاسم",
+                question: "أي الكلمات التالية تُعد اسماً بدليل دخول (الـ) التعريف عليها؟",
+                options: ["يَكْتُبُ", "إِلَى", "قَرَأَ", "الْمَدْرَسَةُ"],
+                correct: 3, // د
+                explanation: "دخول (الـ) من العلامات المميّزة للاسم فقط، فتكون (الْمَدْرَسَةُ) اسماً."
+            },
+            {
+                category: "أنواع الاسم وعلاماته",
+                type: "علامة التاء المربوطة",
+                question: "العلامة التي مَيَّزَتِ الاسم في كلمة (حَدِيقَةٌ) هي:",
+                options: ["ياء النداء", "دخول حرف الجر", "التاء المربوطة والتنوين", "السين وسوف"],
+                correct: 2, // ج
+                explanation: "انتهت الكلمة بالتاء المربوطة والتنوين وهما من علامات الاسم."
+            },
+            {
+                category: "أنواع الاسم وعلاماته",
+                type: "علامة حرف الجر",
+                question: "«نَلْعَبُ فِي الْحَدِيقَةِ». الكلمة التي تُعد اسماً لأنها سُبِقَتْ بحرف جر هي:",
+                options: ["الْحَدِيقَةِ", "نلعب", "في", "يلعبون"],
+                correct: 0, // أ
+                explanation: "(الحديقة) اسم لأنها جاءت بعد حرف الجر (في)."
+            },
+
+            // --- 2. أنواع الفعل (4 أسئلة) ---
+            {
+                category: "أنواع الفعل",
+                type: "الفعل الماضي",
+                question: "«شَرِبَ الطِّفْلُ اللَّبَنَ». كلمة (شَرِبَ) فعل:",
+                options: ["مضارع", "أمر", "ماضٍ", "اسم"],
+                correct: 2, // ج
+                explanation: "(شَرِبَ) فعل ماضٍ حدث وانتهى."
+            },
+            {
+                category: "أنواع الفعل",
+                type: "الفعل المضارع",
+                question: "«يَكْتُبُ التِّلْمِيذُ الواجِبَ». الفعل الذي يحدث **الآن** ومستمر هو:",
+                options: ["التلميذ", "الواجب", "كتب", "يَكْتُبُ"],
+                correct: 3, // د
+                explanation: "(يَكْتُبُ) فعل مضارع يبدأ بالياء ويحدث في الوقت الحاضر."
+            },
+            {
+                category: "أنواع الفعل",
+                type: "فعل الأمر",
+                question: "«اِقْرَأْ كِتَابَكَ بِاهْتِمَامٍ». كلمة (اِقْرَأْ) فعل نوعه:",
+                options: ["أَمْـــرٌ", "ماضٍ", "مضارع", "اسم إشارة"],
+                correct: 0, // أ
+                explanation: "(اِقْرَأْ) فعل أمر فيه طلب القيام بحدث القراءة."
+            },
+            {
+                category: "أنواع الفعل",
+                type: "تمييز الفعل المضارع",
+                question: "الفعل المضارع من الكلمة (سَفَرَ) هو:",
+                options: ["سافر", "يُسَافِرُ", "اسافر", "سافرت"],
+                correct: 1, // ب
+                explanation: "(يُسَافِرُ) هو الفعل المضارع من الفعل الماضي (سفر)."
+            },
+
+            // --- 3. التنوين (3 أسئلة) ---
+            {
+                category: "التنوين",
+                type: "تنوين الفتح",
+                question: "الكتابة الصحيحة لكلمة (كِتَاب) عند تنوينها بالفتح هي:",
+                options: ["كِتَابَن", "كِتَابٌ", "كِتَابًا", "كِتَابٍ"],
+                correct: 2, // ج
+                explanation: "تنوين الفتح يُزاد في آخره ألف فتكتب: (كِتَابًا)."
+            },
+            {
+                category: "التنوين",
+                type: "تنوين الفتح مع التاء المربوطة",
+                question: "عند تنوين كلمة (مَدْرَسَة) بتنوين الفتح تُكتب:",
+                options: ["مَدْرَسَةً", "مدرسةان", "مدرسةل", "مَدْرَسَةلً"],
+                correct: 0, // أ
+                explanation: "التاء المربوطة تُوضع فوقها الفتحتان دون زيادة ألف فتُكتب: (مَدْرَسَةً)."
+            },
+            {
+                category: "التنوين",
+                type: "تحديد نوع التنوين",
+                question: "«سَمِعْتُ صَوْتاً عَالِياً». نوع التنوين في كلمة (صَوْتاً) هو تنوين:",
+                options: ["ضم", "فتح", "كسر", "سكون"],
+                correct: 1, // ب
+                explanation: "فتحتان فوق الكلمة الألف الزائدة فهو تنوين فتح."
+            },
+
+            // --- 4. نوع الجملة (اسمية ولا فعلية) (4 أسئلة) ---
+            {
+                category: "نوع الجملة",
+                type: "الجملة الاسمية",
+                question: "«الشَّمْسُ مُشْرِقَةٌ». هذه الجملة نوعها:",
+                options: ["جملة فعلية", "جملة اسمية", "جملة أمرية", "حرف"],
+                correct: 1, // ب
+                explanation: "بدأت باسم يبدأ بـ (الـ) وهو (الشمس)، فتكون جملة اسمية."
+            },
+            {
+                category: "نوع الجملة",
+                type: "الجملة الفعلية",
+                question: "«يُمَارِسُ أَحْمَدُ الرِّيَاضَةَ». هذه الجملة نوعها:",
+                options: ["جملة اسمية", "جملة حرفية", "جملة فعلية", "جملة إشارة"],
+                correct: 2, // ج
+                explanation: "بدأت بفعل مضارع وهو (يُمَارِسُ)، فتكون جملة فعلية."
+            },
+            {
+                category: "نوع الجملة",
+                type: "تحديد الجملة الفعلية",
+                question: "أيّ الجُمل التالية تُعد **جملة فعلية**؟",
+                options: ["الزَّهْرَةُ جَمِيلَةٌ", "الوَلَدُ نَشِيطٌ", "المُعَلِّمُ فِي الفَصْلِ", "نَامَ الطِّفْلُ مُبَكِّرًا"],
+                correct: 3, // د
+                explanation: "(نَامَ الطِّفْلُ) بدأت بالفعل الماضي (نام) فهي جملة فعلية."
+            },
+            {
+                category: "نوع الجملة",
+                type: "تحديد الجملة الاسمية",
+                question: "«الطَّالِبُ يُذَاكِرُ بِاجْتِهَادٍ». الجملة نوعها اسمية لأنها بدأت بـ:",
+                options: ["اســـم (الطالب)", "فعل (يزاكر)", "حرف (باجتهاد)", "اسم إشارة"],
+                correct: 0, // أ
+                explanation: "بدأت بالاسم (الطالب) فتعد جملة اسمية."
+            },
+
+            // --- 5. المفرد والمثنى والجمع وتحويلاتهم (5 أسئلة) ---
+            {
+                category: "المفرد والمثنى والجمع",
+                type: "المثنى",
+                question: "المثنى من كلمة (قَلَم) هو:",
+                options: ["أقلام", "قَلَمَانِ", "قلمون", "قلمات"],
+                correct: 1, // ب
+                explanation: "المثنى يُزاد في آخره (ان) على المفرد فيكون: (قَلَمَانِ)."
+            },
+            {
+                category: "المفرد والمثنى والجمع",
+                type: "الجمع",
+                question: "الجمع من كلمة (شَجَرَة) هو:",
+                options: ["شجرتان", "شجران", "أَشْجَار", "شجرة"],
+                correct: 2, // ج
+                explanation: "جمع كلمة (شجرة) هو (أَشْجَار)."
+            },
+            {
+                category: "المفرد والمثنى والجمع",
+                type: "تحويل المفرد للمثنى",
+                question: "تحويل جملة «المُعَلِّمُ نَشِيطٌ» للمثنى تكون:",
+                options: ["المعلمون نشيطون", "المُعَلِّمَانِ نَشِيطَانِ", "المعلمات نشيطات", "هذان معلمان"],
+                correct: 1, // ب
+                explanation: "بزيادة (ان) على المفردين تصبح: «المُعَلِّمَانِ نَشِيطَانِ»."
+            },
+            {
+                category: "المفرد والمثنى والجمع",
+                type: "تحويل المفرد للجمع",
+                question: "تحويل جملة «المُهَنْدِسُ بَارِعٌ» للجمع تكون:",
+                options: ["المستشفيات بارعة", "المعلمان بارعان", "المُهَنْدِسُونَ بَارِعُونَ", "المهندسان بارعان"],
+                correct: 2, // ج
+                explanation: "جمع (المهندس) هو (المهندسون) وجمع (بارع) هو (بارعون)."
+            },
+            {
+                category: "المفرد والمثنى والجمع",
+                type: "المفرد",
+                question: "مفرد كلمة (أَطْفَال) هو:",
+                options: ["طفلتان", "طفولية", "طفلات", "طِفْلٌ"],
+                correct: 3, // د
+                explanation: "المفرد الذكر من (أطفال) هو (طِفْلٌ)."
+            },
+
+            // --- 6. أسماء الإشارة كاملة (القريب والبعيد مع أولئك) (6 أسئلة) ---
+            {
+                category: "أسماء الإشارة",
+                type: "المثنى المذكر",
+                question: "«......... كِتَابَانِ مُفِيدَانِ». اسم الإشارة المناسب هو:",
+                options: ["هَذَا", "هَاتَانِ", "هَذَانِ", "هَؤُلاءِ"],
+                correct: 2, // ج
+                explanation: "(كتابان) مثنى مذكر ونستخدم معه اسم الإشارة (هَذَانِ)."
+            },
+            {
+                category: "أسماء الإشارة",
+                type: "المثنى المؤنث",
+                question: "«......... طَالِبَتَانِ مَاهِرَتَانِ». اسم الإشارة المناسب هو:",
+                options: ["هَذَا", "هَاتَانِ", "هَذَانِ", "هَؤُلاءِ"],
+                correct: 1, // ب
+                explanation: "(طالبتان) مثنى مؤنث ونستخدم معه اسم الإشارة (هَاتَانِ)."
+            },
+            {
+                category: "أسماء الإشارة",
+                type: "جمع العاقل",
+                question: "«......... عُمَّالٌ مُخْلِصُونَ». اسم الإشارة المناسب هو:",
+                options: ["هَذِهِ", "هَذَانِ", "هَاتَانِ", "هَؤُلاءِ"],
+                correct: 3, // د
+                explanation: "(عمال) جمع عاقل ونستخدم معه اسم الإشارة (هَؤُلاءِ)."
+            },
+            {
+                category: "أسماء الإشارة",
+                type: "اسم الإشارة للبعيد (المذكر)",
+                question: "«......... القَمَرُ يَنِيرُ فِي السَّمَاءِ (بعيد)». اسم الإشارة للبعيد المناسب هو:",
+                options: ["ذَلِكَ", "تِلْكَ", "هذا", "هذه"],
+                correct: 0, // أ
+                explanation: "(القمر) مفرد مذكر بعيد ونشير إليه بـ (ذَلِكَ)."
+            },
+            {
+                category: "أسماء الإشارة",
+                type: "اسم الإشارة للبعيد (المؤنث والجمع غير العاقل)",
+                question: "«......... السَّحَابَةُ بَعِيدَةٌ فِي السَّمَاءِ». اسم الإشارة للبعيد المناسب هو:",
+                options: ["ذَلِكَ", "تِلْكَ", "هؤلاء", "هذان"],
+                correct: 1, // ب
+                explanation: "(السحابة) مفردة مؤنثة بعيدة ونشير إليها باسم الإشارة للبعيد (تِلْكَ)."
+            },
+            {
+                category: "أسماء الإشارة",
+                type: "اسم الإشارة للبعيد (الجمع العاقل)",
+                question: "«......... جُنودٌ أَبْطَالٌ يُدَافِعُونَ عَنْ وَطَنِهِمْ (بعيد)». اسم الإشارة للبعيد المناسب هو:",
+                options: ["تلك", "ذلك", "هؤلاء", "أُولَئِكَ"],
+                correct: 3, // د
+                explanation: "(جنود) جمع عاقل بعيد ونشير إليه باسم الإشارة للبعيد (أُولَئِكَ)."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let studentName = "";
+        let selectedOption = null;
+
+        // Elements
+        const startScreen = document.getElementById('start-screen');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultScreen = document.getElementById('result-screen');
+        const studentNameInput = document.getElementById('student-name-input');
+        const nameError = document.getElementById('name-error');
+        const displayStudentName = document.getElementById('display-student-name');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQNum = document.getElementById('current-q-num');
+
+        const questionCategory = document.getElementById('question-category');
+        const questionTypeBadge = document.getElementById('question-type-badge');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const explanationBox = document.getElementById('explanation-box');
+        const explanationTitle = document.getElementById('explanation-title');
+        const explanationText = document.getElementById('explanation-text');
+        const nextBtn = document.getElementById('next-btn');
+
+        function startExam() {
+            const name = studentNameInput.value.trim();
+            if (name === "") {
+                nameError.classList.remove('hidden');
+                return;
+            }
+            nameError.classList.add('hidden');
+            studentName = name;
+            displayStudentName.textContent = studentName;
+
+            startScreen.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            selectedOption = null;
+            nextBtn.disabled = true;
+            explanationBox.classList.add('hidden');
+
+            const q = questionsData[currentQuestion];
+
+            currentQNum.textContent = currentQuestion + 1;
+            const progressPercent = ((currentQuestion) / questionsData.length) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+
+            questionCategory.textContent = q.category;
+            questionTypeBadge.textContent = q.type;
+            questionText.textContent = q.question;
+
+            optionsContainer.innerHTML = "";
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = `btn-option text-right w-full p-3.5 rounded-2xl border-2 border-slate-200 bg-white hover:border-emerald-400 text-slate-800 font-bold text-sm sm:text-base flex items-center justify-between shadow-sm`;
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs text-transparent check-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                `;
+                btn.onclick = () => selectOption(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(index, btn) {
+            if (selectedOption !== null) return;
+            selectedOption = index;
+
+            const q = questionsData[currentQuestion];
+            const allBtns = optionsContainer.children;
+
+            for (let i = 0; i < allBtns.length; i++) {
+                allBtns[i].disabled = true;
+                allBtns[i].classList.remove('hover:border-emerald-400');
+            }
+
+            if (index === q.correct) {
+                score++;
+                btn.classList.remove('border-slate-200', 'bg-white');
+                btn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+                btn.querySelector('.check-icon').classList.remove('text-transparent', 'border-slate-300');
+                btn.querySelector('.check-icon').classList.add('bg-emerald-500', 'text-white', 'border-emerald-500');
+
+                showExplanation(true, q.explanation);
+            } else {
+                btn.classList.remove('border-slate-200', 'bg-white');
+                btn.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-900');
+                btn.querySelector('.check-icon').innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                btn.querySelector('.check-icon').classList.remove('text-transparent', 'border-slate-300');
+                btn.querySelector('.check-icon').classList.add('bg-rose-500', 'text-white', 'border-rose-500');
+
+                const correctBtn = allBtns[q.correct];
+                correctBtn.classList.remove('border-slate-200', 'bg-white');
+                correctBtn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+
+                showExplanation(false, q.explanation, q.options[q.correct]);
+            }
+
+            nextBtn.disabled = false;
+        }
+
+        function showExplanation(isCorrect, explanation, correctAnswerText = '') {
+            explanationBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');
+
+            if (isCorrect) {
+                explanationBox.classList.add('bg-emerald-50', 'border-emerald-200');
+                explanationTitle.className = 'flex items-center gap-2 font-black mb-1 text-emerald-800 text-sm sm:text-base';
+                explanationTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i> إجابة صحيحة! أحسنت يا بطل.`;
+                explanationText.innerHTML = explanation;
+            } else {
+                explanationBox.classList.add('bg-rose-50', 'border-rose-200');
+                explanationTitle.className = 'flex items-center gap-2 font-black mb-1 text-rose-800 text-sm sm:text-base';
+                explanationTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i> إجابة خاطئة! الإجابة الصحيحة هي: (${correctAnswerText})`;
+                explanationText.innerHTML = `<strong>التوضيح:</strong> ${explanation}`;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questionsData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            document.getElementById('result-student-name').textContent = `الطالب / الطالبة: ${studentName}`;
+            document.getElementById('score-text').textContent = `${score} / ${questionsData.length}`;
+            
+            const percentage = Math.round((score / questionsData.length) * 100);
+            document.getElementById('percentage-text').textContent = `النسبة المئوية: ${percentage}%`;
+
+            const resultIcon = document.getElementById('result-icon');
+            const evalTag = document.getElementById('evaluation-tag');
+            const resultMessage = document.getElementById('result-message');
+
+            if (percentage >= 90) {
+                resultIcon.className = "w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-emerald-100 text-emerald-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-trophy"></i>`;
+                evalTag.className = "mt-2 inline-block px-4 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800";
+                evalTag.textContent = "ممتاز - عبقري العربية";
+                resultMessage.textContent = "ما شاء الله يا بطل! أداء ممتاز ورائع يدل على فهمك المتميز للقواعد والتأسيس الصحيح.";
+            } else if (percentage >= 70) {
+                resultIcon.className = "w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-teal-100 text-teal-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-star"></i>`;
+                evalTag.className = "mt-2 inline-block px-4 py-1 rounded-full text-xs font-black bg-teal-100 text-teal-800";
+                evalTag.textContent = "جيد جداً - مجتهد مميز";
+                resultMessage.textContent = "أحسنت! أداء رائع جداً، مراجعة الأسئلة التي أخطأت فيها ستجعلك تصل إلى الدرجة النهائية دائماً.";
+            } else if (percentage >= 50) {
+                resultIcon.className = "w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-amber-100 text-amber-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-thumbs-up"></i>`;
+                evalTag.className = "mt-2 inline-block px-4 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-800";
+                evalTag.textContent = "مقبول - يحتاج مراجعة بسيطة";
+                resultMessage.textContent = "نجحت في الاختبار! يفضل مراجعة أنواع الجملة وأسماء الإشارة للبعيد ثم إعادة الاختبار مرة أخرى.";
+            } else {
+                resultIcon.className = "w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-rose-100 text-rose-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-book-open"></i>`;
+                evalTag.className = "mt-2 inline-block px-4 py-1 rounded-full text-xs font-black bg-rose-100 text-rose-800";
+                evalTag.textContent = "يحتاج مراجعة مع الأستاذ";
+                resultMessage.textContent = "لا بأس يا بطل! اقرأ القواعد بتركيز مع الأستاذ أحمد وحيد ثم حاول مرة أخرى لتتفوق في الاختبار القادم.";
+            }
+        }
+
+        function restartExam() {
+            currentQuestion = 0;
+            score = 0;
+            resultScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+            studentNameInput.value = "";
+        }
+    </script>
+</body>
+</html>
