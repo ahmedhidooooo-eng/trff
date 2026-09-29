@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امتحان النحو الإلكتروني - الصف السادس الابتدائي (الترم الأول)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-option {
+            transition: all 0.25s ease;
+        }
+        .btn-option:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="py-6 px-3 sm:px-6">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header Container -->
+        <header class="glass-card rounded-3xl p-6 mb-6 shadow-xl border-t-4 border-indigo-600 text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-indigo-100 rounded-full blur-2xl opacity-50"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-100 rounded-full blur-2xl opacity-50"></div>
+            
+            <span class="bg-indigo-100 text-indigo-800 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full inline-block mb-3 shadow-sm">
+                <i class="fa-solid fa-graduation-cap ml-1"></i> الصف السادس الابتدائي - الترم الأول
+            </span>
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-800 mb-2">
+                اختبار النحو والإملاء التفاعلي الشامل
+            </h1>
+            <p class="text-xs sm:text-base text-slate-600 mb-4 font-medium">
+                يشمل: الفاعل والمفعول به | الأسماء الخمسة | النكرة والمعرفة | المفاعيل | الهمزة المتوسطة على نبرة
+            </p>
+
+            <!-- Teacher Info Header Badge -->
+            <div class="inline-flex flex-wrap items-center justify-center gap-3 bg-gradient-to-r from-slate-800 to-indigo-950 text-white px-5 py-2.5 rounded-2xl shadow-md text-sm">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-user-tie text-amber-400"></i>
+                    <span>إعداد: <strong class="text-amber-300 font-bold">أستاذ أحمد وحيد</strong></span>
+                </div>
+                <span class="hidden sm:inline text-slate-500">|</span>
+                <div class="flex items-center gap-2 text-slate-200 dir-ltr">
+                    <i class="fa-solid fa-phone text-emerald-400"></i>
+                    <span class="font-mono text-xs sm:text-sm">01030353036</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Student Name Input Screen -->
+        <div id="start-screen" class="glass-card rounded-3xl p-6 sm:p-10 shadow-xl text-center">
+            
+            <!-- Honor Roll Section -->
+            <div class="mb-8 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-4 sm:p-6 shadow-inner">
+                <div class="inline-flex items-center gap-2 bg-amber-500 text-white px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold mb-4 shadow">
+                    <i class="fa-solid fa-award text-yellow-200"></i>
+                    <span>لوحة شرف طلاب الشهر</span>
+                    <i class="fa-solid fa-star text-yellow-200"></i>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="bg-white border border-amber-200 rounded-xl px-5 py-2.5 shadow-sm flex items-center gap-3">
+                        <i class="fa-solid fa-crown text-amber-500 text-lg"></i>
+                        <span class="font-bold text-slate-800 text-sm sm:text-base">عمر عرفة</span>
+                    </div>
+                    <div class="bg-white border border-amber-200 rounded-xl px-5 py-2.5 shadow-sm flex items-center gap-3">
+                        <i class="fa-solid fa-crown text-amber-500 text-lg"></i>
+                        <span class="font-bold text-slate-800 text-sm sm:text-base">جودي محمود</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
+                <i class="fa-solid fa-user-pen"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-2">مرحباً بك يا بطل!</h2>
+            <p class="text-slate-600 mb-6 text-sm sm:text-base">يرجى كتابة اسمك الثلاثي لبدء امتحان الترم الأول (30 سؤالاً متنوعاً)</p>
+            
+            <div class="max-w-md mx-auto mb-6">
+                <input type="text" id="student-name-input" placeholder="أدخل اسمك هنا..." 
+                    class="w-full px-5 py-3.5 rounded-2xl border-2 border-indigo-200 focus:border-indigo-600 focus:outline-none text-center font-bold text-slate-800 text-lg shadow-sm transition">
+                <p id="name-error" class="text-red-500 text-xs font-bold mt-2 hidden"><i class="fa-solid fa-triangle-exclamation"></i> يرجى إدخال الاسم قبل البدء!</p>
+            </div>
+
+            <button onclick="startExam()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg hover:shadow-indigo-300 transition-all text-lg w-full sm:w-auto">
+                ابدأ الاختبار الآن <i class="fa-solid fa-arrow-left mr-2"></i>
+            </button>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="hidden space-y-6">
+            <!-- Progress Bar -->
+            <div class="glass-card rounded-2xl p-4 shadow-md flex items-center justify-between gap-4">
+                <div class="flex items-center gap-2 text-slate-700 font-bold text-sm sm:text-base">
+                    <i class="fa-solid fa-user-graduate text-indigo-600"></i>
+                    <span id="display-student-name" class="text-indigo-900">--</span>
+                </div>
+                <div class="flex-1 max-w-xs mx-2">
+                    <div class="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
+                        <div id="progress-bar" class="bg-indigo-600 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="text-xs sm:text-sm font-bold text-slate-600">
+                    السؤال <span id="current-q-num" class="text-indigo-600 font-black">1</span> من 30
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div id="question-card" class="glass-card rounded-3xl p-6 sm:p-8 shadow-xl relative">
+                <div class="flex items-center justify-between mb-4">
+                    <span id="question-category" class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full">
+                        --
+                    </span>
+                    <span id="question-type-badge" class="bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1 rounded-full border border-slate-200">
+                        --
+                    </span>
+                </div>
+
+                <h3 id="question-text" class="text-lg sm:text-2xl font-bold text-slate-800 leading-relaxed mb-6">
+                    --
+                </h3>
+
+                <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6">
+                    <!-- Options injected by JS -->
+                </div>
+
+                <div id="explanation-box" class="hidden rounded-2xl p-4 sm:p-5 mb-6 border transition-all animate-fade-in">
+                    <div class="flex items-center gap-2 font-bold mb-2 text-base sm:text-lg" id="explanation-title">
+                        <!-- Icon & Title -->
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 text-xs sm:text-sm leading-relaxed font-medium">
+                        <!-- Explanation Content -->
+                    </p>
+                </div>
+
+                <div class="flex justify-end">
+                    <button id="next-btn" onclick="nextQuestion()" disabled 
+                        class="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold px-6 py-3 rounded-xl shadow-md transition flex items-center gap-2 text-sm sm:text-base">
+                        <span>السؤال التالي</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden glass-card rounded-3xl p-6 sm:p-10 shadow-2xl text-center">
+            <div id="result-icon" class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg">
+                <!-- Icon injected by JS -->
+            </div>
+            
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mb-2">نتيجة اختبار الترم الأول</h2>
+            <p id="result-student-name" class="text-lg text-indigo-700 font-bold mb-4">--</p>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-sm mx-auto mb-6 shadow-inner">
+                <div class="text-4xl sm:text-5xl font-black text-indigo-600 mb-2" id="score-text">0 / 30</div>
+                <div class="text-sm font-bold text-slate-500" id="percentage-text">النسبة المئوية: 0%</div>
+                <div id="evaluation-tag" class="mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold"></div>
+            </div>
+
+            <p id="result-message" class="text-slate-700 font-medium mb-8 px-4 text-sm sm:text-base">
+                --
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="restartExam()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition text-sm sm:text-base">
+                    <i class="fa-solid fa-rotate-right ml-2"></i> إعادة الاختبار
+                </button>
+                <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition text-sm sm:text-base">
+                    <i class="fa-solid fa-print ml-2"></i> طباعة النتيجة
+                </button>
+            </div>
+
+            <div class="mt-10 pt-6 border-t border-slate-200 text-xs text-slate-500">
+                <p class="font-bold text-slate-700">إعداد الأستاذ: أحمد وحيد</p>
+                <p class="font-mono mt-1">تليفون: 01030353036</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-8 text-center text-xs text-slate-500 font-medium">
+            <p>جميع الحقوق محفوظة © للصف السادس الابتدائي (الترم الأول) | إعداد أ/ أحمد وحيد (01030353036)</p>
+        </footer>
+    </div>
+
+    <script>
+        // Quiz Data - 30 Questions (Updated with new phrasing & Middle Hamza on Nabra)
+        const questionsData = [
+            // --- إعراب الفاعل والمفعول به ---
+            {
+                category: "إعراب الفاعل",
+                type: "اختيار من متعدد",
+                question: "«يُصَمِّمُ المُنَفِّذُونَ المَشَارِيعَ بِإِتْقَانٍ». علامة رفع الفاعل في الجملة:",
+                options: ["الضمة", "الواو", "الألف", "الفتحة"],
+                correct: 1,
+                explanation: "الفاعل هو (المنفذون)، وهو جمع مذكر سالم فيُرفع وعلامة رفعه الواو."
+            },
+            {
+                category: "إعراب المفعول به",
+                type: "تصويب الخطأ",
+                question: "صوب الخطأ: «كَرَّمَتِ الإِدَارَةُ المُمَيَّزَاتُ مِنَ المُعَلِّمَاتِ».",
+                options: ["المميزاتِ", "المميزاتَ", "المميزاتُ", "المميزاتٌ"],
+                correct: 0,
+                explanation: "(المميزاتِ) مفعول به منصوب وعلامة نصبه الكسرة نيابة عن الفتحة لأنه جمع مؤنث سالم."
+            },
+            {
+                category: "إعراب الفاعل والمفعول به",
+                type: "اختيار من متعدد",
+                question: "«يَنْشُرُ البَاحِثَانِ المَقَالَتَيْنِ». الكلمتان المخطوطتان إعرابهما على التوالي:",
+                options: ["فاعل مرفوع بالألف - مفعول به منصوب بالكسرة", "فاعل مرفوع بالألف - مفعول به منصوب بالياء", "فاعل مرفوع بالضمة - مفعول به منصوب بالفتحة", "مبتدأ مرفوع - خبر منصوب"],
+                correct: 1,
+                explanation: "(الباحثان) فاعل مرفوع بالألف لأنه مثنى، و(المقالتين) مفعول به منصوب بالياء لأنه مثنى."
+            },
+            {
+                category: "إعراب المفعول به",
+                type: "استخراج وتحديد",
+                question: "حدد المفعول به وعلامة إعرابه في: «رَتَّبَ الطَّالِبُ المَكْتَبَةَ فِي المَسَاءِ».",
+                options: ["الطالبُ - مرفوع بالضمة", "المكتبةَ - منصوب بالفتحة", "المساء - مجرور بالكسرة", "رتّبَ - مبني على الفتح"],
+                correct: 1,
+                explanation: "(المكتبةَ) اسم وقع عليه فعل الفاعل فيُعرب مفعولاً به منصوباً وعلامة نصبه الفتحة."
+            },
+            {
+                category: "إعراب الفاعل",
+                type: "اختيار من متعدد",
+                question: "«تَرْعَى أُمَّهَاتُ الجِيلِ أَبْنَاءَهُنَّ». علامة رفع الفاعل (أمهاتُ) هي:",
+                options: ["الألف", "الواو", "الضمة", "الفتحة"],
+                correct: 2,
+                explanation: "(أمهاتُ) جمع مؤنث سالم، وجمع المؤنث السالم يُرفع وعلامة رفعه الضمة الظاهرة."
+            },
+            {
+                category: "إعراب المفعول به",
+                type: "تصويب الخطأ",
+                question: "«اشْتَرَى المَعْمَلُ جِهَازَيْنِ حَدِيثَيْنِ». الضبط الإعرابي لكلمة (جهازينِ):",
+                options: ["مفعول به منصوب وعلامة نصبه الياء لأنه مثنى", "مفعول به منصوب وعلامة نصبه الفتحة", "فاعل مرفوع بالألف", "مضاف إليه مجرور بالياء"],
+                correct: 0,
+                explanation: "المفعول به هنا مثنى (جهازين)، والمثنى يُنصب وعلامة نصبه الياء."
+            },
+
+            // --- الأسماء الخمسة ---
+            {
+                category: "الأسماء الخمسة",
+                type: "اختيار من متعدد",
+                question: "وَصَلَ ......... إِلَى القَاعَةِ مُبَكِّراً. اختر الكلمة الصحيحة:",
+                options: ["أباك", "أبوك", "أبيك", "أباكِ"],
+                correct: 1,
+                explanation: "الكلمة فاعل مرفوع، والأسماء الخمسة تُرفع بالواو فتصبح (أبوك)."
+            },
+            {
+                category: "الأسماء الخمسة",
+                type: "تصويب الخطأ",
+                question: "صوب الخطأ في الجملة التالية: «شَاوِرْ أَبَاكَ وَأَخُوكَ».",
+                options: ["شاور أباك وأخاك", "شاور أبيك وأخيك", "شاور أبوك وأخوك", "شاور أباك وأخيك"],
+                correct: 0,
+                explanation: "(أخاك) معطوف على مفعول به منصوب (أباك)، والأسماء الخمسة تُنصب بالألف، فالصواب: «أخاك»."
+            },
+            {
+                category: "الأسماء الخمسة",
+                type: "استخراج وتحديد",
+                question: "حدد الاسم من الأسماء الخمسة وحالته الإعرابية في: «اطْمَأْنَنْتُ عَلَى حَمِيكَ».",
+                options: ["اطمأننتُ - فعل ماضٍ", "حميك - اسم مجرور بالياء", "حميك - اسم مجرور بالكسرة", "حميك - مفعول به منصوب"],
+                correct: 1,
+                explanation: "«حميك» سبق بحرف جر (على)، وهو اسم من الأسماء الخمسة يجر بالياء."
+            },
+            {
+                category: "الأسماء الخمسة",
+                type: "شروط عمل الأسماء الخمسة",
+                question: "«أَخِي يُحِبُّ القِرَاءَةَ». كلمة (أخي) ليست من الأسماء الخمسة لأنها:",
+                options: ["جاءت جمعاً", "جاءت غير مضافة", "أُضيفت إلى ياء المتكلم", "ليست مكبرة"],
+                correct: 2,
+                explanation: "من شروط الأسماء الخمسة أن تكون مضافة لغير ياء المتكلم. وعند إضافتها لياء المتكلم تُعرب بحركات مقدرة."
+            },
+            {
+                category: "الأسماء الخمسة",
+                type: "اختيار من متعدد",
+                question: "شَاهَدْتُ ......... العَلَمِ فِي المَحْفَلِ. اختر الصواب:",
+                options: ["ذا", "ذو", "ذي", "ذو العلم"],
+                correct: 0,
+                explanation: "موقع الكلمة مفعول به منصوب، والأسماء الخمسة تُنصب بالألف فتكون (ذا)."
+            },
+            {
+                category: "الأسماء الخمسة",
+                type: "تصويب الخطأ",
+                question: "«يَنْطِقُ فُوكَ بِالحِكْمَةِ دَائِماً». حدد حالة كلمة (فوك):",
+                options: ["ينطق فمك بالحكمة", "ينطق فاك بالحكمة", "ينطق فيك بالحكمة", "الجملة صحيحة وهي فاعل مرفوع بالواو"],
+                correct: 3,
+                explanation: "الجملة صحيحة تماماً، لأن كلمة (فوك) زالت منها الميم وأُضيفت لغير ياء المتكلم وهي فاعل مرفوع بالواو."
+            },
+            {
+                category: "الأسماء الخمسة",
+                type: "شروط عمل الأسماء الخمسة",
+                question: "«هَؤُلَاءِ إِخْوَةٌ أَوْفِيَاءُ». كلمة (إخوة) تُعرب بحركات ظاهرة لأنها:",
+                options: ["مضافة لغير ياء المتكلم", "جاءت جمعاً وليست مفردة", "غير مضافة", "مثنى"],
+                correct: 1,
+                explanation: "شرط الأسماء الخمسة أن تكون مفردة، وكلمة (إخوة) جمع فيعرب خبر مرفوع بالضمة الظاهرة."
+            },
+            {
+                category: "الأسماء الخمسة",
+                type: "اختيار من متعدد",
+                question: "سَاعِدْ ......... الأَصْغَرَ فِي دُرُوسِهِ. أكمل باسم مناسب:",
+                options: ["أخوك", "أخيك", "أخاك", "أخيكِ"],
+                correct: 2,
+                explanation: "موقع الكلمة مفعول به منصوب، والأسماء الخمسة تُنصب بالألف فتختار (أخاك)."
+            },
+
+            // --- النكرة والمعرفة ---
+            {
+                category: "النكرة والمعرفة",
+                type: "استخراج وتحديد",
+                question: "حدد نوع المعرفة في كلمة (المرور) في جملة: «إِشَارَاتُ المُرُورِ وَاضِحَةٌ».",
+                options: ["علم", "ضمير", "اسم إشارة", "معرف بـ (أل)"],
+                correct: 3,
+                explanation: "كلمة (المرور) تبدأ بأداة التعريف (أل) فهي معرف بـ (أل)."
+            },
+            {
+                category: "النكرة والمعرفة",
+                type: "اختيار من متعدد",
+                question: "أي الكلمات التالية تُعد اسمًا (نكرة)؟",
+                options: ["المَدْرَسَةُ", "مَدْرَسَةٌ", "مَدْرَسَتِي", "مِصْرُ"],
+                correct: 1,
+                explanation: "«مدرسةٌ» منونة وبدون (أل) وغير مضافة لمعرفة فهي اسم نكرة يدل على غير معين."
+            },
+            {
+                category: "النكرة والمعرفة",
+                type: "استخراج وتحديد",
+                question: "الجملة التي تشتمل على «علم» هي:",
+                options: ["مَكَّةُ مَهْبِطُ الوَحْيِ", "هَذَا طَالِبٌ نَشِيطٌ", "الرَّجُلُ يَعْمَلُ فِي المَصْنَعِ", "مَدْرَسَتُنَا وَاسِعَةٌ"],
+                correct: 0,
+                explanation: "«مكةُ» اسم مدينة فهو (علم)، والأعلام من أنواع المعارف."
+            },
+            {
+                category: "النكرة والمعرفة",
+                type: "تصويب الخطأ",
+                question: "«تَصَفَّحْتُ دَفْتَرَ الطَّالِبِ». كلمة (دَفْتَرَ) تعتبر معرفة لأنها:",
+                options: ["معرفة بـ (أل)", "معرفة بالإضافة", "علم", "اسم موصول"],
+                correct: 1,
+                explanation: "كلمة (دفتر) اكتسبت التعريف لأنها أُضيفت إلى كلمة معرفة بـ (أل) وهي (الطالب)."
+            },
+            {
+                category: "النكرة والمعرفة",
+                type: "اختيار من متعدد",
+                question: "كل ما يلي من المعارف ما عدا كلمة واحدة هي:",
+                options: ["الَّذِي", "أَنْتُمْ", "هَؤُلَاءِ", "مُعَلِّمَةٌ"],
+                correct: 3,
+                explanation: "«معلمةٌ» اسم نكرة، بينما (الذي) اسم موصول، و(أنتم) ضمير، و(هؤلاء) اسم إشارة وكلها معارف."
+            },
+
+            // --- المفعول لأجله ---
+            {
+                category: "المفعول لأجله",
+                type: "اختيار من متعدد",
+                question: "يَجْتَهِدُ العَامِلُ ......... فِي التَّرْقِيَةِ. الضبط الصحيح للكلمة:",
+                options: ["أَمَلاً", "أَمَلٌ", "أَمَلٍ", "عَنْ أَمَلٍ"],
+                correct: 0,
+                explanation: "المفعول لأجله اسم منصوب يبين سبب حدوث الفعل، فيكون «أملاً»."
+            },
+            {
+                category: "المفعول لأجله",
+                type: "استخراج وتحديد",
+                question: "«نُنَظِّمُ أَوْقَاتَنَا حِرْصاً عَلَى النَّجَاحِ». المفعول لأجله في الجملة هو:",
+                options: ["أوقاتنا", "حرصاً", "النجاح", "ننظم"],
+                correct: 1,
+                explanation: "كلمة (حرصاً) بَيّنت سبب القيام بالفعل (لماذا ننظم؟)، فهي المفعول لأجله المنصوب."
+            },
+            {
+                category: "المفعول لأجله",
+                type: "تصويب الخطأ",
+                question: "صوب الإعراب: «يُصَلِّي المُؤْمِنُ شُكْراً لِلَّهِ». كلمة (شكراً) تُعرب:",
+                options: ["مفعولاً لأجله منصوباً بالفتحة", "مفعولاً به منصوباً", "حالاً منصوباً", "مفعولاً مطلقاً"],
+                correct: 0,
+                explanation: "«شكراً» مصدر منصوب يبين سبب الصلاة، فيُعرب مفعولاً لأجله."
+            },
+            {
+                category: "المفعول لأجله",
+                type: "اختيار من متعدد",
+                question: "المفعول لأجله يكون دائماً اسمًا:",
+                options: ["مرفوعاً", "مجروراً", "منصوباً", "مجزوماً"],
+                correct: 2,
+                explanation: "المفاعيل كلها من المنصوبات، فالمفعول لأجله دائماً منصوب."
+            },
+
+            // --- المفعول المطلق ---
+            {
+                category: "المفعول المطلق",
+                type: "اختيار من متعدد",
+                question: "«ارْتَفَعَ العَلَمُ ارْتِفَاعاً». نوع المفعول المطلق هنا:",
+                options: ["مبين للنوع", "مؤكد للفعل", "مبين للعدد", "نائب عن الفاعل"],
+                correct: 1,
+                explanation: "كلمة (ارتفاعاً) لم يأتِ بعدها صفة ولا مضاف إليه ولا تدل على عدد، فهي تؤكد الفعل فقط."
+            },
+            {
+                category: "المفعول المطلق",
+                type: "اختيار من متعدد",
+                question: "«فَهِمْتُ المَسْأَلَةَ فَهْماً دَقِيقاً». كلمة (فهماً) مفعول مطلق نوعه:",
+                options: ["مبين للنوع", "مؤكد للفعل", "مبين للعدد", "حال"],
+                correct: 0,
+                explanation: "جاءت بعدها نعت/صفة (دقيقاً) تُبين نوع الفهم، فهو مفعول مطلق مبين للنوع."
+            },
+            {
+                category: "المفعول المطلق",
+                type: "تصويب الخطأ",
+                question: "صوب إعراب الكلمة المخطوطة: «دَارَ اللَّاعِبُ حَوْلَ المَلْعَبِ دَوْرَتَيْنِ».",
+                options: ["مفعول به منصوب بالكسرة", "مفعول لأجله منصوب بالياء", "مفعول مطلق منصوب بالياء لأنه مثنى", "فاعل مرفوع بالألف"],
+                correct: 2,
+                explanation: "«دورتين» مصدر من لفظ الفعل ويدل على عدد المرات، فيُعرب مفعولاً مطلقاً مبيناً للعدد منصوباً بالياء."
+            },
+
+            // --- الإملاء: الهمزة المتوسطة على نبرة (على ياء) ---
+            {
+                category: "الهمزة المتوسطة على نبرة",
+                type: "اختيار من متعدد",
+                question: "«المُعَلِّمُونَ ......... فِي عَمَلِهِمْ». اختر الكلمة المكتوبة صحيحة إملائياً:",
+                options: ["مُتَفَائِلُونَ", "مُتَفَاؤُلُونَ", "مُتَفَاءَلُونَ", "مُتَفَايِلُونَ"],
+                correct: 0,
+                explanation: "تُكتب الهمزة المتوسطة على نبرة (على ياء) لأن الهمزة مكسورة وما قبلها ألف مد ساكنة والكسرة أقوى الحركات."
+            },
+            {
+                category: "الهمزة المتوسطة على نبرة",
+                type: "استخراج وتحديد",
+                question: "كُتِبَتِ الهمزةُ على نَبْرَةٍ (ياء) فِي كلمة (البِيئَة) لأنَّ الهمزةَ:",
+                options: ["مفتوحة بعد ياء ساكنة (مد بالياء)", "مكسورة وما قبلها مضموم", "مضمومة وما قبلها مفتوح", "ساكنة وما قبلها مكسور"],
+                correct: 0,
+                explanation: "تُكتب الهمزة المتوسطة على نبرة إذا كانت مفتوحة وقبلها ياء ساكنة (مد بالياء)."
+            },
+            {
+                category: "الهمزة المتوسطة على نبرة",
+                type: "تصويب الخطأ",
+                question: "حدّد الكلمة الصحيحة إملائياً لإكمال الجملة: «إنَّ الصَّدَاقَةَ الحَقِيقِيَّةَ ......... طَيِّبَةٌ».",
+                options: ["عَاطِفَةٌ", "مَزِيَّيَةٌ", "بِيئَةٌ", "جَرِيئَةٌ"],
+                correct: 3,
+                explanation: "كلمة (جريئة) تُكتب فيها الهمزة المتوسطة على نبرة لأنها مفتوحة وما قبلها ياء مد ساكنة."
+            },
+
+            // --- سؤال شامل للقواعد والمفاعيل ---
+            {
+                category: "شامل القواعد",
+                type: "استخراج وتحديد",
+                question: "«زَارَ أَخُوكَ المَرِيضَ اطْمِئْنَاناً عَلَيْهِ زِيَارَةً». الكلمة التي تُعرب مفعولاً مطلقاً هي:",
+                options: ["أخوكَ", "اطمئناناً", "المريضَ", "زيارةً"],
+                correct: 3,
+                explanation: "«زيارةً» مأخوذة من لفظ الفعل (زارَ) فتُعرب مفعولاً مطلقاً، أما (اطمئناناً) فمفعول لأجله، و(أخوك) فاعل."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let studentName = "";
+        let selectedOption = null;
+
+        // Elements
+        const startScreen = document.getElementById('start-screen');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultScreen = document.getElementById('result-screen');
+        const studentNameInput = document.getElementById('student-name-input');
+        const nameError = document.getElementById('name-error');
+        const displayStudentName = document.getElementById('display-student-name');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQNum = document.getElementById('current-q-num');
+
+        const questionCategory = document.getElementById('question-category');
+        const questionTypeBadge = document.getElementById('question-type-badge');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const explanationBox = document.getElementById('explanation-box');
+        const explanationTitle = document.getElementById('explanation-title');
+        const explanationText = document.getElementById('explanation-text');
+        const nextBtn = document.getElementById('next-btn');
+
+        function startExam() {
+            const name = studentNameInput.value.trim();
+            if (name === "") {
+                nameError.classList.remove('hidden');
+                return;
+            }
+            nameError.classList.add('hidden');
+            studentName = name;
+            displayStudentName.textContent = studentName;
+
+            startScreen.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            selectedOption = null;
+            nextBtn.disabled = true;
+            explanationBox.classList.add('hidden');
+
+            const q = questionsData[currentQuestion];
+
+            currentQNum.textContent = currentQuestion + 1;
+            const progressPercent = ((currentQuestion) / questionsData.length) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+
+            questionCategory.textContent = q.category;
+            questionTypeBadge.textContent = q.type;
+            questionText.textContent = q.question;
+
+            optionsContainer.innerHTML = "";
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = `btn-option text-right w-full p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-indigo-400 text-slate-800 font-bold text-sm sm:text-base flex items-center justify-between shadow-sm`;
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs text-transparent check-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                `;
+                btn.onclick = () => selectOption(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(index, btn) {
+            if (selectedOption !== null) return;
+            selectedOption = index;
+
+            const q = questionsData[currentQuestion];
+            const allBtns = optionsContainer.children;
+
+            for (let i = 0; i < allBtns.length; i++) {
+                allBtns[i].disabled = true;
+                allBtns[i].classList.remove('hover:border-indigo-400');
+            }
+
+            if (index === q.correct) {
+                score++;
+                btn.classList.remove('border-slate-200', 'bg-white');
+                btn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+                btn.querySelector('.check-icon').classList.remove('text-transparent', 'border-slate-300');
+                btn.querySelector('.check-icon').classList.add('bg-emerald-500', 'text-white', 'border-emerald-500');
+
+                showExplanation(true, q.explanation);
+            } else {
+                btn.classList.remove('border-slate-200', 'bg-white');
+                btn.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-900');
+                btn.querySelector('.check-icon').innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                btn.querySelector('.check-icon').classList.remove('text-transparent', 'border-slate-300');
+                btn.querySelector('.check-icon').classList.add('bg-rose-500', 'text-white', 'border-rose-500');
+
+                const correctBtn = allBtns[q.correct];
+                correctBtn.classList.remove('border-slate-200', 'bg-white');
+                correctBtn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+
+                showExplanation(false, q.explanation, q.options[q.correct]);
+            }
+
+            nextBtn.disabled = false;
+        }
+
+        function showExplanation(isCorrect, explanation, correctAnswerText = '') {
+            explanationBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');
+
+            if (isCorrect) {
+                explanationBox.classList.add('bg-emerald-50', 'border-emerald-200');
+                explanationTitle.className = 'flex items-center gap-2 font-bold mb-1 text-emerald-800 text-sm sm:text-base';
+                explanationTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> إجابة صحيحة! أحسنت يا بطل.`;
+                explanationText.innerHTML = explanation;
+            } else {
+                explanationBox.classList.add('bg-rose-50', 'border-rose-200');
+                explanationTitle.className = 'flex items-center gap-2 font-bold mb-1 text-rose-800 text-sm sm:text-base';
+                explanationTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600"></i> إجابة خاطئة! الإجابة الصحيحة هي: (${correctAnswerText})`;
+                explanationText.innerHTML = `<strong>الشرح والتصويب:</strong> ${explanation}`;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questionsData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            document.getElementById('result-student-name').textContent = `الطالب / الطالبة: ${studentName}`;
+            document.getElementById('score-text').textContent = `${score} / ${questionsData.length}`;
+            
+            const percentage = Math.round((score / questionsData.length) * 100);
+            document.getElementById('percentage-text').textContent = `النسبة المئوية: ${percentage}%`;
+
+            const resultIcon = document.getElementById('result-icon');
+            const evalTag = document.getElementById('evaluation-tag');
+            const resultMessage = document.getElementById('result-message');
+
+            if (percentage >= 90) {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-emerald-100 text-emerald-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-trophy"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800";
+                evalTag.textContent = "ممتاز جداً - عبقري النحو والإملاء";
+                resultMessage.textContent = "ما شاء الله! أدائك ممتاز ورائع يدل على فهمك المتميز لدروس النحو والإملاء. استمر في هذا التفوق!";
+            } else if (percentage >= 75) {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-blue-100 text-blue-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-star"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800";
+                evalTag.textContent = "جيد جداً - مجتهد";
+                resultMessage.textContent = "أحسنت! نتيجة جيدة جداً، راجع الإجابات التي أخطأت فيها لتصل للدرجة النهائية في المرة القادمة.";
+            } else if (percentage >= 50) {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-amber-100 text-amber-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-thumbs-up"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800";
+                evalTag.textContent = "مقبول - تحتاج لمراجعة";
+                resultMessage.textContent = "لقد اجتزت الاختبار، لكنك تحتاج إلى تركيز ومراجعة أكبر لدروس النحو وقواعد الهمزة المتوسطة.";
+            } else {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-rose-100 text-rose-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-book-open"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-rose-100 text-rose-800";
+                evalTag.textContent = "يحتاج إلى إعادة مذاكرة";
+                resultMessage.textContent = "لا تقلق، يمكنك إعادة الاختبار بعد مراجعة القواعد وشروحات الأستاذ أحمد وحيد لتعزيز فهمك!";
+            }
+        }
+
+        function restartExam() {
+            currentQuestion = 0;
+            score = 0;
+            resultScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+            studentNameInput.value = "";
+        }
+    </script>
+</body>
+</html>
