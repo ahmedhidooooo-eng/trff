@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امتحان النحو والإملاء والبلاغة وعلامات الترقيم - الصف الرابع الابتدائي</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-option {
+            transition: all 0.25s ease;
+        }
+        .btn-option:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="py-6 px-3 sm:px-6">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header Container -->
+        <header class="glass-card rounded-3xl p-6 mb-6 shadow-xl border-t-4 border-indigo-600 text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-indigo-100 rounded-full blur-2xl opacity-50"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-100 rounded-full blur-2xl opacity-50"></div>
+            
+            <span class="bg-indigo-100 text-indigo-800 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full inline-block mb-3 shadow-sm">
+                <i class="fa-solid fa-graduation-cap ml-1"></i> الصف الرابع الابتدائي - اللغة العربية
+            </span>
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-800 mb-2">
+                اختبار العربية الشامل التفاعلي
+            </h1>
+            <p class="text-xs sm:text-base text-slate-600 mb-4 font-medium">
+                دخول الحروف على (الـ) | الضمائر | علامات الاسم | أنواع الجمع | الحقيقي والمجازي | علامات الترقيم
+            </p>
+
+            <!-- Teacher Info Header Badge -->
+            <div class="inline-flex flex-wrap items-center justify-center gap-3 bg-gradient-to-r from-slate-800 to-indigo-950 text-white px-5 py-2.5 rounded-2xl shadow-md text-sm">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-user-tie text-amber-400"></i>
+                    <span>إعداد: <strong class="text-amber-300 font-bold">أستاذ أحمد وحيد</strong></span>
+                </div>
+                <span class="hidden sm:inline text-slate-500">|</span>
+                <div class="flex items-center gap-2 text-slate-200 dir-ltr">
+                    <i class="fa-solid fa-phone text-emerald-400"></i>
+                    <span class="font-mono text-xs sm:text-sm">01030353036</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Student Name Input Screen -->
+        <div id="start-screen" class="glass-card rounded-3xl p-6 sm:p-10 shadow-xl text-center">
+            
+            <!-- ================= لوحة الشرف أعلى الصفحة ================= -->
+            <div class="mb-8 pb-8 border-b border-slate-200/80">
+                <div class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-slate-900 font-black px-6 py-2.5 rounded-full shadow-lg shadow-amber-200 text-sm sm:text-base mb-3 transform hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-crown text-amber-900 text-lg"></i>
+                    <span>لوحة الشرف - فرسان الشهر</span>
+                    <i class="fa-solid fa-star text-amber-900 text-sm"></i>
+                </div>
+                
+                <p class="text-xs sm:text-sm text-slate-500 mb-6 font-medium">
+                    نُخبة من الطلاب المتميزين والمبدعين في مادة اللغة العربية 🌟
+                </p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
+                    <!-- طالب 1 -->
+                    <div class="group bg-white/80 backdrop-blur-md rounded-2xl p-4 border border-amber-200/60 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1.5 transition-all duration-300 text-center relative overflow-hidden">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-amber-400 to-yellow-200 rounded-full flex items-center justify-center mx-auto mb-2 text-amber-900 font-extrabold shadow-md group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-award text-xl sm:text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-amber-700 transition-colors">عمر أحمد</h4>
+                        <span class="text-[10px] sm:text-xs text-amber-600 font-bold bg-amber-50 px-2.5 py-0.5 rounded-full inline-block mt-1">بطل تميز 🌟</span>
+                    </div>
+
+                    <!-- طالب 2 -->
+                    <div class="group bg-white/80 backdrop-blur-md rounded-2xl p-4 border border-purple-200/60 shadow-sm hover:shadow-xl hover:border-purple-400 hover:-translate-y-1.5 transition-all duration-300 text-center relative overflow-hidden">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-purple-400 to-pink-200 rounded-full flex items-center justify-center mx-auto mb-2 text-purple-900 font-extrabold shadow-md group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-award text-xl sm:text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-purple-700 transition-colors">أميرة إبراهيم</h4>
+                        <span class="text-[10px] sm:text-xs text-purple-600 font-bold bg-purple-50 px-2.5 py-0.5 rounded-full inline-block mt-1">بطلة تميز 🌟</span>
+                    </div>
+
+                    <!-- طالب 3 -->
+                    <div class="group bg-white/80 backdrop-blur-md rounded-2xl p-4 border border-emerald-200/60 shadow-sm hover:shadow-xl hover:border-emerald-400 hover:-translate-y-1.5 transition-all duration-300 text-center relative overflow-hidden">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-emerald-400 to-teal-200 rounded-full flex items-center justify-center mx-auto mb-2 text-emerald-900 font-extrabold shadow-md group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-award text-xl sm:text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-emerald-700 transition-colors">لانا محمد</h4>
+                        <span class="text-[10px] sm:text-xs text-emerald-600 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block mt-1">بطلة تميز 🌟</span>
+                    </div>
+
+                    <!-- طالب 4 -->
+                    <div class="group bg-white/80 backdrop-blur-md rounded-2xl p-4 border border-rose-200/60 shadow-sm hover:shadow-xl hover:border-rose-400 hover:-translate-y-1.5 transition-all duration-300 text-center relative overflow-hidden">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-rose-400 to-pink-200 rounded-full flex items-center justify-center mx-auto mb-2 text-rose-900 font-extrabold shadow-md group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-award text-xl sm:text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-rose-700 transition-colors">مسك شهاب</h4>
+                        <span class="text-[10px] sm:text-xs text-rose-600 font-bold bg-rose-50 px-2.5 py-0.5 rounded-full inline-block mt-1">بطلة تميز 🌟</span>
+                    </div>
+
+                    <!-- طالب 5 -->
+                    <div class="group bg-white/80 backdrop-blur-md rounded-2xl p-4 border border-sky-200/60 shadow-sm hover:shadow-xl hover:border-sky-400 hover:-translate-y-1.5 transition-all duration-300 text-center relative overflow-hidden col-span-2 sm:col-span-1">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-sky-400 to-indigo-200 rounded-full flex items-center justify-center mx-auto mb-2 text-sky-900 font-extrabold shadow-md group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-award text-xl sm:text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-sky-700 transition-colors">رقية أحمد عبد الرحمن</h4>
+                        <span class="text-[10px] sm:text-xs text-sky-600 font-bold bg-sky-50 px-2.5 py-0.5 rounded-full inline-block mt-1">بطلة تميز 🌟</span>
+                    </div>
+                </div>
+            </div>
+            <!-- ================= end لوحة الشرف ================= -->
+
+            <!-- ادخال اسم الطالب -->
+            <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
+                <i class="fa-solid fa-user-pen"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-2">مرحباً بك يا بطل!</h2>
+            <p class="text-slate-600 mb-6 text-sm sm:text-base">يرجى كتابة اسمك الثلاثي لبدء الاختبار التفاعلي</p>
+            
+            <div class="max-w-md mx-auto mb-6">
+                <input type="text" id="student-name-input" placeholder="أدخل اسمك هنا..." 
+                    class="w-full px-5 py-3.5 rounded-2xl border-2 border-indigo-200 focus:border-indigo-600 focus:outline-none text-center font-bold text-slate-800 text-lg shadow-sm transition">
+                <p id="name-error" class="text-red-500 text-xs font-bold mt-2 hidden"><i class="fa-solid fa-triangle-exclamation"></i> يرجى إدخال الاسم قبل البدء!</p>
+            </div>
+
+            <button onclick="startExam()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg hover:shadow-indigo-300 transition-all text-lg w-full sm:w-auto">
+                ابدأ الاختبار الآن <i class="fa-solid fa-arrow-left mr-2"></i>
+            </button>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="hidden space-y-6">
+            <!-- Progress Bar -->
+            <div class="glass-card rounded-2xl p-4 shadow-md flex items-center justify-between gap-4">
+                <div class="flex items-center gap-2 text-slate-700 font-bold text-sm sm:text-base">
+                    <i class="fa-solid fa-user-graduate text-indigo-600"></i>
+                    <span id="display-student-name" class="text-indigo-900">--</span>
+                </div>
+                <div class="flex-1 max-w-xs mx-2">
+                    <div class="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
+                        <div id="progress-bar" class="bg-indigo-600 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="text-xs sm:text-sm font-bold text-slate-600">
+                    السؤال <span id="current-q-num" class="text-indigo-600 font-black">1</span> من <span id="total-q-num">30</span>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div id="question-card" class="glass-card rounded-3xl p-6 sm:p-8 shadow-xl relative">
+                <div class="flex items-center justify-between mb-4">
+                    <span id="question-category" class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full">
+                        --
+                    </span>
+                    <span id="question-type-badge" class="bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1 rounded-full border border-slate-200">
+                        --
+                    </span>
+                </div>
+
+                <!-- Question Text -->
+                <h3 id="question-text" class="text-lg sm:text-2xl font-bold text-slate-800 leading-relaxed mb-6">
+                    --
+                </h3>
+
+                <!-- Options Grid -->
+                <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6">
+                    <!-- Options injected by JS -->
+                </div>
+
+                <!-- Explanation Box -->
+                <div id="explanation-box" class="hidden rounded-2xl p-4 sm:p-5 mb-6 border transition-all animate-fade-in">
+                    <div class="flex items-center gap-2 font-bold mb-2 text-base sm:text-lg" id="explanation-title">
+                        <!-- Title -->
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 text-xs sm:text-sm leading-relaxed font-medium">
+                        <!-- Explanation -->
+                    </p>
+                </div>
+
+                <!-- Next Button -->
+                <div class="flex justify-end">
+                    <button id="next-btn" onclick="nextQuestion()" disabled 
+                        class="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold px-6 py-3 rounded-xl shadow-md transition flex items-center gap-2 text-sm sm:text-base">
+                        <span>السؤال التالي</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden glass-card rounded-3xl p-6 sm:p-10 shadow-2xl text-center">
+            <div id="result-icon" class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg">
+                <!-- Icon injected by JS -->
+            </div>
+            
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mb-2">نتيجة اختبار الصف الرابع الابتدائي</h2>
+            <p id="result-student-name" class="text-lg text-indigo-700 font-bold mb-4">--</p>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-sm mx-auto mb-6 shadow-inner">
+                <div class="text-4xl sm:text-5xl font-black text-indigo-600 mb-2" id="score-text">0 / 30</div>
+                <div class="text-sm font-bold text-slate-500" id="percentage-text">النسبة المئوية: 0%</div>
+                <div id="evaluation-tag" class="mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold"></div>
+            </div>
+
+            <p id="result-message" class="text-slate-700 font-medium mb-8 px-4 text-sm sm:text-base">
+                --
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="restartExam()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition text-sm sm:text-base">
+                    <i class="fa-solid fa-rotate-right ml-2"></i> إعادة الاختبار
+                </button>
+                <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition text-sm sm:text-base">
+                    <i class="fa-solid fa-print ml-2"></i> طباعة النتيجة
+                </button>
+            </div>
+
+            <div class="mt-10 pt-6 border-t border-slate-200 text-xs text-slate-500">
+                <p class="font-bold text-slate-700">إعداد الأستاذ: أحمد وحيد</p>
+                <p class="font-mono mt-1">تليفون: 01030353036</p>
+            </div>
+        </div>
+
+        <footer class="mt-8 text-center text-xs text-slate-500 font-medium">
+            <p>جميع الحقوق محفوظة © للصف الرابع الابتدائي | إعداد أ/ أحمد وحيد (01030353036)</p>
+        </footer>
+    </div>
+
+    <script>
+        const questionsData = [
+            // --- 1. دخول (ب - ل - ك - ف) على (الـ) (5 أسئلة) ---
+            {
+                category: "الإملاء: دخول الحروف على (الـ)",
+                type: "حذف ألف الوصل",
+                question: "أسرع الأولاد ......... لِالْتِحَاقِ بِالْحَافِلَةِ. اختر الكتابة الصحيحة للكلمة التي بحرف اللام:",
+                options: ["لِلْنَّجَاحِ", "لِلنَّجَاحِ", "لَالنَّجَاحِ", "لِالْنَجَاحِ"],
+                correct: 1,
+                explanation: "عند دخول حرف اللام (لـ) على كلمة مبدوءة بـ (الـ)، تُحذف همزة الوصل (الألف) تماماً فتصبح (لِلنَّجَاحِ)."
+            },
+            {
+                category: "الإملاء: دخول الحروف على (الـ)",
+                type: "بقاؤ الألف مع (الكاف)",
+                question: "«انْطَلَقَ الْعَدَّاءُ ......... فِي السِّبَاقِ». اختر الكلمة المكتوبة صحيحة:",
+                options: ["كالبرقِ (بدون ألف)", "كَالْبَرْقِ", "كإلبرقِ", "كالسهم"],
+                correct: 1,
+                explanation: "حرف الكاف (كـ) لا يحذف الألف عند دخوله على (الـ)، فتُكتب الكلمة بصورتها الصحيحة: (كَالْبَرْقِ)."
+            },
+            {
+                category: "الإملاء: دخول الحروف على (الـ)",
+                type: "تصويب خطأ إملائي",
+                question: "ما الصواب الإملائي للكلمة المكتوبة خطأ في الجملة: «زَيَّنَّا الْفَصْلَ بالَّوُحَاتِ»؟",
+                options: ["بِاللَّوْحَاتِ", "بلوحاتِ", "بَالَّوْحَاتِ", "بإللوحات"],
+                correct: 0,
+                explanation: "عند اتصال حرف الباء (بـ) بكلمة بها (الـ)، تبقى الألف ولا تحذف، فتكتب: (بِاللَّوْحَاتِ)."
+            },
+            {
+                category: "الإملاء: دخول الحروف على (الـ)",
+                type: "حرف الفاء",
+                question: "«دَخَلَ الْمُعَلِّمُ ......... الطُّلاَّبُ». حدد الكلمة الصحيحة رسمياً:",
+                options: ["فَالطُّلاَّبُ", "فطلابُ (بدون ألف)", "فلطلابُ", "فإلطلابُ"],
+                correct: 0,
+                explanation: "حرف الفاء (فـ) عند دخوله على (الـ) يلتصق بالألف دون حذفها فتكتب: (فَالطُّلاَّبُ)."
+            },
+            {
+                category: "الإملاء: دخول الحروف على (الـ)",
+                type: "القاعدة العامة",
+                question: "تُحذف ألف (الـ) في حالة واحدة فقط عند دخول حرف:",
+                options: ["الباء", "الكاف", "اللام", "الفاء"],
+                correct: 2,
+                explanation: "حرف اللام (لـ) هو الحرف الوحيد الذي يحذف الألف من (الـ) عند دخوله عليها."
+            },
+
+            // --- 2. الضمائر: متكلم - مخاطب - غائب (5 أسئلة) ---
+            {
+                category: "النحو: الضمائر",
+                type: "ضمائر المتكلم",
+                question: "«......... نَسْعَى دَائِماً لِلصَّدَارَةِ». اختر ضمير متكلم مناسب للجمع:",
+                options: ["أَنَا", "أَنْتُمْ", "نَحْنُ", "هُمْ"],
+                correct: 2,
+                explanation: "ضمير المتكلم المناسب لجمع المتكلمين هو (نَحْنُ)."
+            },
+            {
+                category: "النحو: الضمائر",
+                type: "ضمائر المخاطب",
+                question: "«......... مُهَنْدِسَانِ بَارِعَانِ فِي عَمَلِكُمَا». الضمير المناسب للعبارة هو:",
+                options: ["أَنْتُمَا", "هُمَا", "أَنْتُمْ", "نَحْنُ"],
+                correct: 0,
+                explanation: "ضمير المخاطب الذي يُستخدم للمثنى بنوعيه (المذكر والمؤنث) هو (أَنْتُمَا)."
+            },
+            {
+                category: "النحو: الضمائر",
+                type: "ضمائر الغائب",
+                question: "«......... يُسَاعِدْنَ الأُمَّهَاتِ فِي الْبَيْتِ». اختر ضمير غائب مناسب لجمع المؤنث:",
+                options: ["هُمْ", "هُنَّ", "أَنْتُنَّ", "هُمَا"],
+                correct: 1,
+                explanation: "ضمير الغائب المخصص لجمع الإناث (جمع المؤنث) هو (هُنَّ)."
+            },
+            {
+                category: "النحو: الضمائر",
+                type: "تصنيف الضمير",
+                question: "تُصنَّف الضمائر (هُوَ - هِيَ - هُمَا - هُمْ - هُنَّ) على أنها ضمائر:",
+                options: ["متكلم", "مخاطب", "غائب", "إشارة"],
+                correct: 2,
+                explanation: "هذه الضمائر تستخدم للحديث عن شخص أو أشخاص غير حاضرين، وتسمى (ضمائر الغائب)."
+            },
+            {
+                category: "النحو: الضمائر",
+                type: "تحويل الجملة",
+                question: "عند تحويل الجملة «أَنْتَ طَالِبٌ مُتَفَوِّقٌ» لجمع المؤنث تصبح:",
+                options: ["أَنْتُمْ طُلاَّبٌ مُتَفَوِّقُونَ", "أَنْتُنَّ طَالِبَاتٌ مُتَفَوِّقَاتٌ", "هُنَّ طَالِبَاتٌ مُتَفَوِّقَاتٌ", "أَنْتُمَا طَالِبَتَانِ"],
+                correct: 1,
+                explanation: "جمع المؤنث لضمير المخاطب المفرد (أَنْتَ) هو (أَنْتُنَّ)، فتصير: «أَنْتُنَّ طَالِبَاتٌ مُتَفَوِّقَاتٌ»."
+            },
+
+            // --- 3. علامات الاسم وأنواعه (5 أسئلة) ---
+            {
+                category: "النحو: الاسم وعلاماته",
+                type: "علامة التنوين",
+                question: "أي الكلمات الآتية تُعد اسماً بسبب وجود علامة (التنوين) فيها؟",
+                options: ["سَافَرَ", "سَفَرٌ", "يُسَافِرُ", "إِلَى"],
+                correct: 1,
+                explanation: "التنوين (سَفَرٌ) لا يدخل إلا على الأسماء، وهو علامة واضحة تميز الاسم عن الفعل والحرف."
+            },
+            {
+                category: "النحو: الاسم وعلاماته",
+                type: "علامة النداء",
+                question: "ما علامة الاسم التي جعلت كلمة (طَالِبُ) اسماً في جملة: «يَا طَالِبُ اجْتَهِدْ»؟",
+                options: ["دخول ألـ", "قبول التاء المربوطة", "دخول حرف النداء (يا)", "التنوين"],
+                correct: 2,
+                explanation: "سبقت الكلمة أداة النداء (يا)، والنداء من علامات الأسماء الخاصة بها."
+            },
+            {
+                category: "النحو: الاسم وعلاماته",
+                type: "الجر والتعريف",
+                question: "«تَمَشَّيْتُ فِي الْحَدِيقَةِ». العلامات التي أثبتت اسمية كلمة (الحديقة) هي:",
+                options: ["التنوين فقط", "دخول حرف الجر و(الـ) والتاء المربوطة", "النداء والتنوين", "ياء المخاطبة"],
+                correct: 1,
+                explanation: "كلمة (الحديقة) جاءت بعد حرف جر (في)، وتبدأ بـ (الـ)، وتنتهي بـ (التاء المربوطة)."
+            },
+            {
+                category: "النحو: الاسم وعلاماته",
+                type: "دلالة الاسم",
+                question: "كلمة (مَكْتَبَة) تدل على اسم:",
+                options: ["إنسان", "مكان", "حيوان", "صفة"],
+                correct: 1,
+                explanation: "(مكتبة) تعبر عن اسم مكان نذهب إليه لقراءة الكتب."
+            },
+            {
+                category: "النحو: الاسم وعلاماته",
+                type: "التمييز بين الكلمات",
+                question: "اختر الكلمة التي تمثل اسماً من بين الخيارات التالية:",
+                options: ["يَرْسُمُ", "عَلَى", "زَهْرَةٌ", "اكْتُبْ"],
+                correct: 2,
+                explanation: "(زَهْرَةٌ) اسم ينتهي بتاء مربوطة وتنوين وهما من علامات الأسماء."
+            },
+
+            // --- 4. أنواع الجمع (5 أسئلة) ---
+            {
+                category: "النحو: أنواع الجمع",
+                type: "جمع المذكر السالم",
+                question: "الجمع الذي ينتهي بـ (ون) أو (ين) زائدتين على مفرده العاقل يسمى:",
+                options: ["جمع مؤنث سالم", "جمع مذكر سالم", "جمع تكسير", "مفرد"],
+                correct: 1,
+                explanation: "جمع المذكر السالم هو ما دل على أكثر من اثنين بزيادة واو ونون أو ياء ونون مع سلامة مفرده."
+            },
+            {
+                category: "النحو: أنواع الجمع",
+                type: "جمع المؤنث السالم",
+                question: "كلمة (مُهَنْدِسَات) نوع الجمع فيها:",
+                options: ["جمع مذكر سالم", "جمع تكسير", "جمع مؤنث سالم", "مثنى"],
+                correct: 2,
+                explanation: "ينتهي بالألف والتاء الزائدتين على المفرد (مهندسة -> مهندسات)، فهو جمع مؤنث سالم."
+            },
+            {
+                category: "النحو: أنواع الجمع",
+                type: "جمع التكسير",
+                question: "أي من الجموع التالية يُعتبر **جمع تكسير**؟",
+                options: ["مُعَلِّمُونَ", "طَبِيبَاتٌ", "أَقْلاَمٌ", "مُؤْمِنِينَ"],
+                correct: 2,
+                explanation: "(أقلام) جمع تكسير لأن صورة مفردها (قلم) تغيرت ولم تنتهِ بنهايات الجمع السالم."
+            },
+            {
+                category: "النحو: أنواع الجمع",
+                type: "تمييز الجمع السالم من التكسير",
+                question: "كلمة (فُنُون) جمع تكسير وليست جمع مذكر سالم لأن:",
+                options: ["الواو والنون من أصل الكلمة وتغيرت صورة المفرد (فن)", "تتحدث عن العاقل", "فعل ماضٍ", "جمع مؤنث"],
+                correct: 0,
+                explanation: "مفردها (فن)، والواو والنون غير زائدتين على المفرد كما أنها لغير العاقل فتغيرت الصورة، فهو جمع تكسير."
+            },
+            {
+                category: "النحو: أنواع الجمع",
+                type: "استخراج الجمع",
+                question: "«يُشَاهِدُ الزُّوَّارُ الآثَارَ». كلمة (الزُّوَّار) نوع الجمع بها:",
+                options: ["جمع مذكر سالم", "جمع مؤنث سالم", "جمع تكسير", "مثنى"],
+                correct: 2,
+                explanation: "مفردها (زائر)، وتكسرت فيه صورة المفرد عند الجمع فصار جمع تكسير."
+            },
+
+            // --- 5. التعبير الحقيقي والتعبير المجازي (5 أسئلة) ---
+            {
+                category: "البلاغة: التعبير الحقيقي والمجازي",
+                type: "التعبير الحقيقي",
+                question: "«تُمْطِرُ السَّمَاءُ فِي الشِّتَاءِ». هذا التعبير يُعد تعبيراً:",
+                options: ["مجازياً", "حقيقياً", "خيالياً", "غير صحيح"],
+                correct: 1,
+                explanation: "تعبير حقيقي لأنه يصف حقيقة واقعية تحدث بالفعل في فصل الشتاء."
+            },
+            {
+                category: "البلاغة: التعبير الحقيقي والمجازي",
+                type: "التعبير المجازي",
+                question: "«تَبْتَسِمُ الأَزْهَارُ فِي الرَّبِيعِ». الاستخدام هنا يُعتبر تعبيراً:",
+                options: ["حقيقياً", "مجازياً", "علمياً", "واقعياً"],
+                correct: 1,
+                explanation: "تعبير مجازي، لأن الأزهار لا تبتسم حقيقة بل تشبيه خيالي بالاستبشار بالربيع."
+            },
+            {
+                category: "البلاغة: التعبير الحقيقي والمجازي",
+                type: "تمييز التعبير المجازي",
+                question: "حدد العبارة التي تشتمل على **تعبير مجازي**:",
+                options: ["الْمَاءُ سَائِلٌ ضَرُورِيٌّ", "الْكِتَابُ صَدِيقٌ يُحَدِّثُنِي", "يَبْنِي الْعَامِلُ الْبَيْتَ", "يَطِيرُ الطَّائِرُ بِجَنَاحَيْهِ"],
+                correct: 1,
+                explanation: "(الكتاب صديق يحدثني) تعبير مجازي حيث شبّه الكتاب بإنسان يتحدث وصديق يرافق."
+            },
+            {
+                category: "البلاغة: التعبير الحقيقي والمجازي",
+                type: "سبب التعبير المجازي",
+                question: "«الْمُعَلِّمُ نُورٌ يَهْدِي الْعُقُولَ». تعبير مجازي لأن:",
+                options: ["المعلم يُخرج ضوءاً حقيقياً", "تم تشبيه المعلم بالنور في فائدة الهداية والإرشاد", "الجملة غير مفيدة", "تعبير حقيقي"],
+                correct: 1,
+                explanation: "تعبير مجازي استخدم الخيال والتشبيه لتوضيح أهمية دور المعلم."
+            },
+            {
+                category: "البلاغة: التعبير الحقيقي والمجازي",
+                type: "التعبير الحقيقي",
+                question: "«تَزْقُزِقُ الْعَصَافِيرُ صَبَاحاً». التعبير نوعه:",
+                options: ["مجازي", "حقيقي", "خيالي", "غير منطقي"],
+                correct: 1,
+                explanation: "تعبير حقيقي لأن أصوات العصافير بالصباح هي الزقزقة بالفعل."
+            },
+
+            // --- 6. علامات الترقيم ( : ! ؟ . ، ) (5 أسئلة) ---
+            {
+                category: "الإملاء: علامات الترقيم",
+                type: "النقطتان الرأسيتان ( : )",
+                question: "قَالَ الأَبُ ..... «اعْمَلُوا بِجِدٍّ». علامة الترقيم المناسبة بعد القول هي:",
+                options: ["النقطة ( . )", "علامة الاستفهام ( ؟ )", "النقطتان الرأسيتان ( : )", "الفاصلة ( ، )"],
+                correct: 2,
+                explanation: "توضع النقطتان الرأسيتان ( : ) بعد القول وما يفيد معناه، مثل (قال - أجاب - حكى)."
+            },
+            {
+                category: "الإملاء: علامات الترقيم",
+                type: "علامة التعجب ( ! )",
+                question: "«مَا أَجْمَلَ أَلْوَانَ الْقَوْسِ قَزَحِ .....» علامة الترقيم المناسبة لنهاية أسلوب التعجب هي:",
+                options: ["علامة التعجب ( ! )", "علامة الاستفهام ( ؟ )", "النقطة ( . )", "الفاصلة ( ، )"],
+                correct: 0,
+                explanation: "توضع علامة التعجب ( ! ) في نهاية جملة أسلوب التعجب التي تعبر عن الدهشة والاشتياق."
+            },
+            {
+                category: "الإملاء: علامات الترقيم",
+                type: "علامة الاستفهام ( ؟ )",
+                question: "«أَيْنَ تَقَعُ مَكْتَبَةُ الْمَدْرَسَةِ .....» علامة الترقيم المناسبة لهذا السؤال هي:",
+                options: ["النقطة ( . )", "علامة الاستفهام ( ؟ )", "علامة التعجب ( ! )", "النقطتان الرأسيتان ( : )"],
+                correct: 1,
+                explanation: "توضع علامة الاستفهام ( ؟ ) في نهاية الجملة الاستفهامية (السؤال)."
+            },
+            {
+                category: "الإملاء: علامات الترقيم",
+                type: "الفاصلة ( ، )",
+                question: "«ذَهَبْتُ إِلَى الْمَكْتَبَةِ ..... وَقَرَأْتُ كِتَاباً مُمِتّعاً». علامة الترقيم التي تفصل بين الجملتين هي:",
+                options: ["علامة الاستفهام ( ؟ )", "الفاصلة ( ، )", "النقطة ( . )", "علامة التعجب ( ! )"],
+                correct: 1,
+                explanation: "توضع الفاصلة ( ، ) بين الجمل المتتابعة والمترابطة المعنى."
+            },
+            {
+                category: "الإملاء: علامات الترقيم",
+                type: "النقطة ( . )",
+                question: "تُوضع **النقطة ( . )** في الكتابة عند:",
+                options: ["نهاية الجملة التامة المعنى", "بعد القول مباشرة", "في نهاية السؤال", "بين أجزاء الشيء"],
+                correct: 0,
+                explanation: "توضع النقطة ( . ) في نهاية الفقرة أو الجملة التامة التي اكتمال معناها."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let studentName = "";
+        let selectedOption = null;
+
+        // Elements
+        const startScreen = document.getElementById('start-screen');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultScreen = document.getElementById('result-screen');
+        const studentNameInput = document.getElementById('student-name-input');
+        const nameError = document.getElementById('name-error');
+        const displayStudentName = document.getElementById('display-student-name');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQNum = document.getElementById('current-q-num');
+        const totalQNum = document.getElementById('total-q-num');
+
+        const questionCategory = document.getElementById('question-category');
+        const questionTypeBadge = document.getElementById('question-type-badge');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const explanationBox = document.getElementById('explanation-box');
+        const explanationTitle = document.getElementById('explanation-title');
+        const explanationText = document.getElementById('explanation-text');
+        const nextBtn = document.getElementById('next-btn');
+
+        function startExam() {
+            const name = studentNameInput.value.trim();
+            if (name === "") {
+                nameError.classList.remove('hidden');
+                return;
+            }
+            nameError.classList.add('hidden');
+            studentName = name;
+            displayStudentName.textContent = studentName;
+            totalQNum.textContent = questionsData.length;
+
+            startScreen.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            selectedOption = null;
+            nextBtn.disabled = true;
+            explanationBox.classList.add('hidden');
+
+            const q = questionsData[currentQuestion];
+
+            currentQNum.textContent = currentQuestion + 1;
+            const progressPercent = ((currentQuestion) / questionsData.length) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+
+            questionCategory.textContent = q.category;
+            questionTypeBadge.textContent = q.type;
+            questionText.textContent = q.question;
+
+            optionsContainer.innerHTML = "";
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = `btn-option text-right w-full p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-indigo-400 text-slate-800 font-bold text-sm sm:text-base flex items-center justify-between shadow-sm`;
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs text-transparent check-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                `;
+                btn.onclick = () => selectOption(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(index, btn) {
+            if (selectedOption !== null) return;
+            selectedOption = index;
+
+            const q = questionsData[currentQuestion];
+            const allBtns = optionsContainer.children;
+
+            for (let i = 0; i < allBtns.length; i++) {
+                allBtns[i].disabled = true;
+                allBtns[i].classList.remove('hover:border-indigo-400');
+            }
+
+            if (index === q.correct) {
+                score++;
+                btn.classList.remove('border-slate-200', 'bg-white');
+                btn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+                btn.querySelector('.check-icon').classList.remove('text-transparent', 'border-slate-300');
+                btn.querySelector('.check-icon').classList.add('bg-emerald-500', 'text-white', 'border-emerald-500');
+
+                showExplanation(true, q.explanation);
+            } else {
+                btn.classList.remove('border-slate-200', 'bg-white');
+                btn.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-900');
+                btn.querySelector('.check-icon').innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                btn.querySelector('.check-icon').classList.remove('text-transparent', 'border-slate-300');
+                btn.querySelector('.check-icon').classList.add('bg-rose-500', 'text-white', 'border-rose-500');
+
+                const correctBtn = allBtns[q.correct];
+                correctBtn.classList.remove('border-slate-200', 'bg-white');
+                correctBtn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+
+                showExplanation(false, q.explanation, q.options[q.correct]);
+            }
+
+            nextBtn.disabled = false;
+        }
+
+        function showExplanation(isCorrect, explanation, correctAnswerText = '') {
+            explanationBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');
+
+            if (isCorrect) {
+                explanationBox.classList.add('bg-emerald-50', 'border-emerald-200');
+                explanationTitle.className = 'flex items-center gap-2 font-bold mb-1 text-emerald-800 text-sm sm:text-base';
+                explanationTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> إجابة صحيحة! أحسنت يا بطل الصف الرابع.`;
+                explanationText.innerHTML = explanation;
+            } else {
+                explanationBox.classList.add('bg-rose-50', 'border-rose-200');
+                explanationTitle.className = 'flex items-center gap-2 font-bold mb-1 text-rose-800 text-sm sm:text-base';
+                explanationTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600"></i> إجابة خاطئة! الإجابة الصحيحة هي: (${correctAnswerText})`;
+                explanationText.innerHTML = `<strong>الشرح والتوضيح:</strong> ${explanation}`;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questionsData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            document.getElementById('result-student-name').textContent = `الطالب / الطالبة: ${studentName}`;
+            document.getElementById('score-text').textContent = `${score} / ${questionsData.length}`;
+            
+            const percentage = Math.round((score / questionsData.length) * 100);
+            document.getElementById('percentage-text').textContent = `النسبة المئوية: ${percentage}%`;
+
+            const resultIcon = document.getElementById('result-icon');
+            const evalTag = document.getElementById('evaluation-tag');
+            const resultMessage = document.getElementById('result-message');
+
+            if (percentage >= 90) {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-emerald-100 text-emerald-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-trophy"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800";
+                evalTag.textContent = "ممتاز جداً - عبقري العربية";
+                resultMessage.textContent = "ما شاء الله! أداء رائع وممتاز في كافة دروس قواعد وإملاء وبلاغة وعلامات الترقيم للصف الرابع الابتدائي.";
+            } else if (percentage >= 75) {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-blue-100 text-blue-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-star"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800";
+                evalTag.textContent = "جيد جداً - بطل مجتهد";
+                resultMessage.textContent = "أحسنت! نتيجة ممتازة، يفضل مراجعة الأسئلة التي أخطأت بها للوصول إلى الدرجة النهائية.";
+            } else if (percentage >= 50) {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-amber-100 text-amber-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-thumbs-up"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800";
+                evalTag.textContent = "مقبول - يحتاج مراجعة بسيطة";
+                resultMessage.textContent = "نجحت في الاختبار! راجع دروس علامات الترقيم وضمائر المتكلم والمخاطب بتركيز أكبر وتمرن مرة أخرى.";
+            } else {
+                resultIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg bg-rose-100 text-rose-600";
+                resultIcon.innerHTML = `<i class="fa-solid fa-book-open"></i>`;
+                evalTag.className = "mt-3 inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-rose-100 text-rose-800";
+                evalTag.textContent = "يحتاج لإعادة المذاكرة";
+                resultMessage.textContent = "لا بأس يا بطل! راجع القواعد مع الأستاذ أحمد وحيد وأعد الاختبار مرة أخرى لتحصل على التقدير الممتاز.";
+            }
+        }
+
+        function restartExam() {
+            currentQuestion = 0;
+            score = 0;
+            resultScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+            studentNameInput.value = "";
+        }
+    </script>
+</body>
+</html>
